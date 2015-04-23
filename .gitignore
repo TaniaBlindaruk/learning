@@ -1,7 +1,7 @@
-/public/includes
-/public/media
-/public/var
-/public/robots.txt
-/public/errors/local.xml
+#/public/includes
+#/public/media
+#/public/var
+#/public/errors/local.xml
+
 /logs/error.log
 .idea
