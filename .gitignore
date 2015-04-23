@@ -1,7 +1,12 @@
-#/public/includes
-#/public/media
-#/public/var
-#/public/errors/local.xml
+/public/includes
+/public/media
+/public/var
+/public/errors/local.xml
+
+/www/includes
+/www/media
+/www/var
+/www/errors/local.xml
 
 /logs/error.log
 .idea
