@@ -8,4 +8,7 @@
             </action>
         </reference>
     </default>
+    <cms_index_index>
+        <remove name="right.poll" />
+    </cms_index_index>
 </layout>
