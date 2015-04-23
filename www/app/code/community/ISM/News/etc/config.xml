@@ -6,6 +6,18 @@
         </ISM_News>
     </modules>
 
+    <frontend>
+        <routers>
+            <news>
+                <use>standard</use>
+                <args>
+                    <module>ISM_News</module>
+                    <frontName>news</frontName>
+                </args>
+            </news>
+        </routers>
+    </frontend>
+
     <global>
 
         <!--name table-->
