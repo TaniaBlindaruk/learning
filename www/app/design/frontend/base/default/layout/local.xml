@@ -7,6 +7,16 @@
                 <name>js/vendor/myjs.js</name>
             </action>
         </reference>
+        <reference name="top.links">
+            <action method="addLink" translate="label title" module="customer">
+                <label>About </label>
+                <url> about-magento-demo-store </url>
+                <title>About</title>
+                <prepare/>
+                <urlParams/>
+                <position>10</position>
+            </action>
+        </reference>
     </default>
     <cms_index_index>
         <remove name="right.poll" />
