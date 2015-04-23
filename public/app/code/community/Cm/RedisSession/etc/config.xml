@@ -1,16 +1,16 @@
 <config>
     <modules>
-        <ISM_News>
+        <Cm_RedisSession>
             <version>0.0.2</version>
-        </ISM_News>
+        </Cm_RedisSession>
     </modules>
-    <!--<global>-->
-        <!--<models>-->
-            <!--<core_mysql4>-->
-                <!--<rewrite>-->
-                    <!--<session>Cm_RedisSession_Model_Session</session>-->
-                <!--</rewrite>-->
-            <!--</core_mysql4>-->
-        <!--</models>-->
-    <!--</global>-->
+    <global>
+        <models>
+            <core_mysql4>
+                <rewrite>
+                    <session>Cm_RedisSession_Model_Session</session>
+                </rewrite>
+            </core_mysql4>
+        </models>
+    </global>
 </config>
