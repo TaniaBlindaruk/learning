@@ -1,0 +1,7 @@
+/public/includes
+/public/media
+/public/var
+/public/robots.txt
+/public/errors/local.xml
+
+/logs/error.log
