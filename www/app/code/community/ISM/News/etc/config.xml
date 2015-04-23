@@ -7,6 +7,17 @@
     </modules>
 
     <frontend>
+
+        <!--add layout-->
+        <layout>
+            <updates>
+                <news>
+                    <file>news.xml</file>
+                </news>
+            </updates>
+        </layout>
+        <!--end/add layout-->
+
         <routers>
             <news>
                 <use>standard</use>
