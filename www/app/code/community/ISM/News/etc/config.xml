@@ -5,4 +5,30 @@
             <version>0.0.1</version>
         </ISM_News>
     </modules>
+
+    <global>
+
+        <!--name table-->
+        <models>
+            <news>
+                <resourceModel>news_resource</resourceModel>
+            </news>
+            <news_resource>
+                <entities>
+                    <entity>
+                        <table>news</table>
+                    </entity>
+                </entities>
+            </news_resource>
+        </models>
+        <!--end name table-->
+
+        <resources>
+            <news_setup>
+                <setup>
+                    <module>ISM_News</module>
+                </setup>
+            </news_setup>
+        </resources>
+    </global>
 </config>

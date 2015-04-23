@@ -1,9 +1,9 @@
 <?xml version="1.0" ?>
 <config>
     <modules>
-        <DS_News>
+        <ISM_News>
             <active>true</active>
             <codePool>community</codePool>
-        </DS_News>
+        </ISM_News>
     </modules>
 </config>
