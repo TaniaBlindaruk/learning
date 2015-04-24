@@ -38,9 +38,11 @@
         <!--name table-->
         <models>
             <news>
+                <class>ISM_News_Model</class>
                 <resourceModel>news_resource</resourceModel>
             </news>
             <news_resource>
+                <class>ISM_News_Model_Resource</class>
                 <entities>
                     <entity>
                         <table>news</table>
