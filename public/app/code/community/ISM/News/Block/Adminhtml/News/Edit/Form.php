@@ -31,6 +31,7 @@ class ISM_News_Block_Adminhtml_News_Edit_Form extends Mage_Adminhtml_Block_Widge
             'label' => $helper->__('Content'),
             'required' => true,
             'name' => 'content',
+            'config'    => Mage::getSingleton('cms/wysiwyg_config')->getConfig()
         ));
 
         $fieldset->addField('announce', 'editor', array(
