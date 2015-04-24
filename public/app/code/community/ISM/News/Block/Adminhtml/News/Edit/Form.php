@@ -32,13 +32,24 @@ class ISM_News_Block_Adminhtml_News_Edit_Form extends Mage_Adminhtml_Block_Widge
             'required' => true,
             'name' => 'content',
         ));
+
+        $fieldset->addField('announce', 'editor', array(
+            'label' => $helper->__('Announce'),
+            'name' => 'announce',
+        ));
 //
-//        $fieldset->addField('created', 'date', array(
-//            'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
-//            'image' => $this->getSkinUrl('images/grid-cal.gif'),
-//            'label' => $helper->__('Created'),
-//            'name' => 'created'
-//        ));
+        $fieldset->addField('publish_date', 'date', array(
+            'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
+            'image' => $this->getSkinUrl('images/grid-cal.gif'),
+            'label' => $helper->__('Publish date'),
+            'name' => 'publish_date',
+            'required' => true,
+        ));
+
+        $fieldset->addField('publish', 'editor', array(
+            'label' => $helper->__('Publish'),
+            'name' => 'publish',
+        ));
 
         $form->setUseContainer(true);
 
