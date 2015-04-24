@@ -11,18 +11,7 @@ class ISM_News_IndexController extends Mage_Core_Controller_Front_Action
 
     public function viewAction()
     {
-        $newsId = Mage::app()->getRequest()->getParam('id', 0);
-        $news = Mage::getModel('news/news')->load($newsId);
-
-        if ($news->getId() > 0) {
-            $this->loadLayout();
-            $this->getLayout()->getBlock('news.content')->assign(array(
-                "newsItem" => $news,
-            ));
-            $this->renderLayout();
-        } else {
-            $this->_forward('noRoute');
-        }
+        $this->loadLayout();
+        $this->renderLayout();
     }
-
 }
