@@ -2,6 +2,12 @@
 
 class ISM_News_Block_Adminhtml_News_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
+    protected function _prepareLayout() {
+        parent::_prepareLayout();
+        if (Mage::getSingleton('cms/wysiwyg_config')->isEnabled()) {
+            $this->getLayout()->getBlock('head')->setCanLoadTinyMce(true);
+        }
+    }
 
     protected function _prepareForm()
     {
@@ -47,9 +53,19 @@ class ISM_News_Block_Adminhtml_News_Edit_Form extends Mage_Adminhtml_Block_Widge
             'required' => true,
         ));
 
-        $fieldset->addField('publish', 'editor', array(
+        $fieldset->addField('publish', 'select', array(
             'label' => $helper->__('Publish'),
             'name' => 'publish',
+            'values' => array(
+                array(
+                    'value' => false,
+                    'label' => $helper->__('No'),
+                ),
+                array(
+                    'value' => true,
+                    'label' =>  $helper->__('Yes'),
+                )
+            ),
         ));
 
         $form->setUseContainer(true);
@@ -59,7 +75,6 @@ class ISM_News_Block_Adminhtml_News_Edit_Form extends Mage_Adminhtml_Block_Widge
         } else {
             $form->setValues($model->getData());
         }
-
         return parent::_prepareForm();
     }
 
