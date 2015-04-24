@@ -30,6 +30,11 @@
     </frontend>
 
     <global>
+        <blocks>
+            <news>
+                <class>ISM_News_Block</class>
+            </news>
+        </blocks>
         <!--name table-->
         <models>
             <news>
