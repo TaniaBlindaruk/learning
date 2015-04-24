@@ -5,7 +5,6 @@
             <version>0.0.1</version>
         </ISM_News>
     </modules>
-
     <frontend>
 
         <!--add layout-->
@@ -28,14 +27,12 @@
             </news>
         </routers>
     </frontend>
-
     <global>
         <blocks>
             <news>
                 <class>ISM_News_Block</class>
             </news>
         </blocks>
-        <!--name table-->
         <models>
             <news>
                 <class>ISM_News_Model</class>
@@ -50,7 +47,6 @@
                 </entities>
             </news_resource>
         </models>
-        <!--end name table-->
         <helpers>
             <news>
                 <class>ISM_News_Helper</class>
@@ -64,8 +60,6 @@
             </news_setup>
         </resources>
     </global>
-
-    <!--add back-->
     <admin>
         <routers>
             <news_admin>
@@ -77,9 +71,6 @@
             </news_admin>
         </routers>
     </admin>
-    <!--/add back-->
-
-    <!--меню Адмінки-->
     <adminhtml>
         <menu>
             <news module="news">
@@ -89,6 +80,4 @@
             </news>
         </menu>
     </adminhtml>
-    <!--/меню Адмінки-->
-
 </config>

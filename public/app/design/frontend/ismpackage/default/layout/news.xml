@@ -2,7 +2,12 @@
 <layout>
     <news_index_index>
         <reference name="content">
-            <block type="core/template" template="news/index.phtml" />
+            <block type="news/news" template="news/index.phtml" />
         </reference>
     </news_index_index>
+    <news_index_view>
+        <reference name="content">
+            <block type="news/view" name="news.content" template="news/view.phtml" />
+        </reference>
+    </news_index_view>
 </layout>

@@ -1,6 +1,12 @@
-<h1>News</h1>
 <?php
-$news = Mage::registry('news');
-foreach ($news as $item) {
-    echo '<h2>' . $item['title'] . '</h2>';
-}
+$news = $this->getNewsCollection();
+$newsViewUrl = Mage::getUrl('news/index/view');
+?>
+    <h1>News</h1>
+<?php foreach ($news as $item): ?>
+    <h2>
+        <a href="<?php echo $newsViewUrl; ?>?id=<?php echo $item->getId(); ?>">
+            <?php echo $item->getTitle(); ?>
+        </a>
+    </h2>
+<?php endforeach; ?>
