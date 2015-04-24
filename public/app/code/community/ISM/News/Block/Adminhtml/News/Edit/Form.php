@@ -64,6 +64,7 @@ class ISM_News_Block_Adminhtml_News_Edit_Form extends Mage_Adminhtml_Block_Widge
                 array(
                     'value' => true,
                     'label' =>  $helper->__('Yes'),
+
                 )
             ),
         ));
