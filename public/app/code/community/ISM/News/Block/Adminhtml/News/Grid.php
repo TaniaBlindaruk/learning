@@ -34,4 +34,10 @@ class ISM_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
         return parent::_prepareColumns();
     }
 
+    public function getRowUrl($model)
+    {
+        return $this->getUrl('*/*/edit', array(
+            'id' => $model->getId(),
+        ));
+    }
 }
