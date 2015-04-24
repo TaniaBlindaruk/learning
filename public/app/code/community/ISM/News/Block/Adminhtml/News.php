@@ -1,11 +1,18 @@
 <?php
 
-class ISM_News_Block_Adminhtml_News extends Mage_Adminhtml_Block_Abstract
+class ISM_News_Block_Adminhtml_News extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
 
-    public function _toHtml()
+    protected function _construct()
     {
-        return '<h1>News Module: Admin section</h1>';
+        parent::_construct();
+
+        $helper = Mage::helper('news');
+        $this->_blockGroup = 'news';
+        $this->_controller = 'adminhtml_news';
+
+        $this->_headerText = $helper->__('News Management');
+        $this->_addButtonLabel = $helper->__('Add News');
     }
 
 }
