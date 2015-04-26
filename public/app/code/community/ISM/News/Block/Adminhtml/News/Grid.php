@@ -16,7 +16,8 @@ class ISM_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
 
         $this->addColumn('news_id', array(
             'header' => $helper->__('News ID'),
-            'index' => 'news_id'
+            'index' => 'news_id',
+            'width' => '50px'
         ));
 
         $this->addColumn('title', array(
@@ -28,7 +29,7 @@ class ISM_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
         $this->addColumn('publish_date', array(
             'header' => $helper->__('Publish date'),
             'index' => 'publish_date',
-            'type' => 'datetime',
+            'type' => 'date',
         ));
 
         $this->addColumn('publish', array(
