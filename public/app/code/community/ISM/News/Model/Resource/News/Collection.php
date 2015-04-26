@@ -8,5 +8,7 @@ class ISM_News_Model_Resource_News_Collection extends Mage_Core_Model_Mysql4_Col
         parent::_construct();
         $this->_init('news/news');
     }
-
+    public function myFilter(){
+        $this->addFieldToFilter('publish=0');
+    }
 }
