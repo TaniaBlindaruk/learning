@@ -1,5 +1,5 @@
 <?php
-$news = $this->getNewsById();
+$news = Mage::registry('news');
 ?>
 <h1><?php echo $news->getTitle(); ?></h1>
 <div class="content"><?php echo $news->getContent(); ?></div>
