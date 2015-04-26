@@ -25,11 +25,21 @@ class ISM_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_Gri
             'type' => 'text',
         ));
 
-//        $this->addColumn('created', array(
-//            'header' => $helper->__('Created'),
-//            'index' => 'created',
-//            'type' => 'date',
-//        ));
+        $this->addColumn('publish_date', array(
+            'header' => $helper->__('Publish date'),
+            'index' => 'publish_date',
+            'type' => 'datetime',
+        ));
+
+        $this->addColumn('publish', array(
+            'header' => $helper->__('Publish'),
+            'index' => 'publish',
+            'type' => 'options',
+            'options' => array(
+                1 => 'Yes',
+                0 => 'No',
+            ),
+        ));
 
         return parent::_prepareColumns();
     }
