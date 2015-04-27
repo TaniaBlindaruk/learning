@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <widgets>
-    <news_widget type="news/latest">
-        <name>Latest news</name>
+    <news_widget type="news/widget_news">
+        <name>News</name>
         <description type="desc">Latest news widget</description>
         <parameters>
             <news_count translate="label">
@@ -13,19 +13,10 @@
             </news_count>
             <template translate="label">
                 <label>Frontend Template</label>
-                <visible>1</visible>
+                <visible>0</visible>
                 <required>1</required>
-                <type>select</type>
-                <values>
-                    <ann translate="label">
-                        <value>news/index.phtml</value>
-                        <label>News latest links(announce)</label>
-                    </ann>
-                    <text translate="label">
-                        <value>news/index.phtml</value>
-                        <label>News latest links(title)</label>
-                    </text>
-                </values>
+                <value>news/widget/widget.phtml</value>
+                <!--<block type="core/template" name="ism.productextra" template="news/widget/title.phtml" />-->
             </template>
         </parameters>
     </news_widget>
