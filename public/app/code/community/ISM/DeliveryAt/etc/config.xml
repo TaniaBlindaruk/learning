@@ -5,4 +5,22 @@
             <version>0.1.0</version>
         </ISM_DeliveryAt>
     </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <shipping_method>
+                    <file>deliveryat.xml</file>
+                </shipping_method>
+            </updates>
+        </layout>
+        <routers>
+            <ism_deliveryat>
+                <use>standard</use>
+                <args>
+                    <module>ISM_DeliveryAt</module>
+                    <frontName>deliveryat</frontName>
+                </args>
+            </ism_deliveryat>
+        </routers>
+    </frontend>
 </config>
