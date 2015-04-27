@@ -1,10 +1,13 @@
-<h2><a href="<?php echo Mage::getUrl('news/index/index'); ?>">News</a></h2>
-<?php //echo $this->getChildHtml('news.title'); ?>
-
 <?php
 $news = $this->getNewsCollection();
 $newsViewUrl = Mage::getUrl('news/index/view');
 ?>
+<?php if (count($news) !== 0): ?>
+    <h2><a href="<?php echo Mage::getUrl('news/index/index'); ?>">News</a></h2>
+<?php endif; ?>
+<?php //echo $this->getChildHtml('news.title'); ?>
+
+
 <?php foreach ($news as $item): ?>
     <div>
         <h2>
@@ -12,6 +15,7 @@ $newsViewUrl = Mage::getUrl('news/index/view');
                 <?php echo $item->getTitle(); ?>
             </a>
         </h2>
+
         <p>
             <?php echo $item->getAnnounce(); ?>
         </p>
