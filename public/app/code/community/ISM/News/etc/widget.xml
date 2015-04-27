@@ -18,11 +18,11 @@
                 <type>select</type>
                 <values>
                     <ann translate="label">
-                        <value>news/widget.phtml</value>
+                        <value>news/index.phtml</value>
                         <label>News latest links(announce)</label>
                     </ann>
                     <text translate="label">
-                        <value>news/title.phtml</value>
+                        <value>news/index.phtml</value>
                         <label>News latest links(title)</label>
                     </text>
                 </values>

@@ -10,4 +10,7 @@ class ISM_News_Block_News extends Mage_Core_Block_Template
         $newsCollection->myFilter();
         return $newsCollection;
     }
+    public function getNewById(){
+        return Mage::getSingleton('news/news')->load(Mage::app()->getRequest()->getParam('id', 0));
+    }
 }
