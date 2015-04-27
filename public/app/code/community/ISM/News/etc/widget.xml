@@ -16,7 +16,6 @@
                 <visible>0</visible>
                 <required>1</required>
                 <value>news/widget/widget.phtml</value>
-                <!--<block type="core/template" name="ism.productextra" template="news/widget/title.phtml" />-->
             </template>
         </parameters>
     </news_widget>
