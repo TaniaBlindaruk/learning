@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <ISM_DeliverAt>
+            <version>0.0.1</version>
+        </ISM_DeliverAt>
+    </modules>
+</config>
