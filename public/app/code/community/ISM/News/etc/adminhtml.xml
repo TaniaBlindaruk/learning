@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
+    <menu>
+        <news module="news">
+            <title>News</title>
+            <sort_order>71</sort_order>
+            <children>
+                <items module="news">
+                    <title>Manage Items</title>
+                    <sort_order>0</sort_order>
+                    <action>news/adminhtml_news</action>
+                </items>
+            </children>
+        </news>
+    </menu>
     <acl>
         <resources>
             <admin>
