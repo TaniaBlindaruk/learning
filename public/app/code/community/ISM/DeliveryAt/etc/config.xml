@@ -60,4 +60,13 @@
             </deliveryat>
         </routers>
     </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <order_view>
+                    <file>deliveryat.xml</file>
+                </order_view>
+            </updates>
+        </layout>
+    </adminhtml>
 </config>
