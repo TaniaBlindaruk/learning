@@ -5,7 +5,44 @@
             <version>0.1.0</version>
         </ISM_DeliveryAt>
     </modules>
+    <global>
+        <helpers>
+            <deliveryat>
+                <class>ISM_DeliveryAt_Helper</class>
+            </deliveryat>
+        </helpers>
+        <models>
+            <deliveryat>
+                <class>ISM_DeliveryAt_Model</class>
+            </deliveryat>
+        </models>
+        <resources>
+            <deliveryat_setup>
+                <setup>
+                    <module>ISM_DeliveryAt</module>
+                </setup>
+            </deliveryat_setup>
+        </resources>
+        <fieldsets>
+            <sales_convert_quote>
+                <deliverydate>
+                    <to_order>deliverydate</to_order>
+                </deliverydate>
+            </sales_convert_quote>
+        </fieldsets>
+    </global>
     <frontend>
+        <events>
+            <checkout_controller_onepage_save_shipping_method>
+                <observers>
+                    <deliveryat>
+                        <type>model</type>
+                        <class>deliveryat/observer</class>
+                        <method>checkoutControllerOnepageSaveShippingMethod</method>
+                    </deliveryat>
+                </observers>
+            </checkout_controller_onepage_save_shipping_method>
+        </events>
         <layout>
             <updates>
                 <shipping_method>
@@ -14,13 +51,13 @@
             </updates>
         </layout>
         <routers>
-            <ism_deliveryat>
+            <deliveryat>
                 <use>standard</use>
                 <args>
                     <module>ISM_DeliveryAt</module>
                     <frontName>deliveryat</frontName>
                 </args>
-            </ism_deliveryat>
+            </deliveryat>
         </routers>
     </frontend>
 </config>
