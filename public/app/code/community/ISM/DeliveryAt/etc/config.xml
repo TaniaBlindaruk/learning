@@ -20,6 +20,7 @@
             <deliveryat_setup>
                 <setup>
                     <module>ISM_DeliveryAt</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
                 </setup>
             </deliveryat_setup>
         </resources>

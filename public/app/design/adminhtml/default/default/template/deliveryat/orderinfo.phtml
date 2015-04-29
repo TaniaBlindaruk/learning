@@ -158,7 +158,7 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
         </fieldset>
     </div>
 </div>
-
+<!--<div class="clear"></div>-->
 <?php if (!$this->getOrder()->getIsVirtual()): ?>
     <div class="box-right">
         <!--Shipping Address-->
@@ -174,7 +174,7 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
     </div>
     <div class="clear"></div>
 <?php endif; ?>
-<div class="box-left">
+<div class="box-right">
     <!--Billing Address-->
     <div class="entry-edit">
         <div class="entry-edit-head">
@@ -184,12 +184,11 @@ $orderStoreDate = $this->formatDate($_order->getCreatedAtStoreDate(), 'medium', 
             <table>
                 <tr>
                 <tr>
-                    <td class="label"><label><?php echo Mage::helper('sales')->__('Fieldset') ?></label></td>
+                    <td class="label"><label><?php echo Mage::helper('sales')->__('Deliver At') ?></label></td>
                     <td class="value"><strong><?php echo $_order->getDeliverydate(); ?></strong></td>
                 </tr>
                 </tr>
             </table>
-
         </div>
     </div>
 </div>

@@ -1,5 +1,5 @@
 <?php
-
+/** @var Mage_Catalog_Model_Resource_Setup $installer */
 $installer = $this;
 $installer->startSetup();
 $installer->getConnection()
@@ -9,7 +9,6 @@ $installer->getConnection()
             'type' => Varien_Db_Ddl_Table::TYPE_DATE,
             'comment' => 'Delivery At'
                 )
-
 );
 $installer->getConnection()
         ->addColumn(
