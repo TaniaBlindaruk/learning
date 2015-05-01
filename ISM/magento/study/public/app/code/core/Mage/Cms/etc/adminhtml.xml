@@ -76,17 +76,6 @@
                             </media_gallery>
                         </children>
                     </cms>
-                    <system>
-                        <children>
-                            <config>
-                                <children>
-                                    <cms translate="title" module="cms">
-                                        <title>Content Management</title>
-                                    </cms>
-                                </children>
-                            </config>
-                        </children>
-                    </system>
                 </children>
             </admin>
         </resources>

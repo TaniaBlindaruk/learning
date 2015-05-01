@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <newstore>
+            <title>Newstore</title>
+            <sort_order>71</sort_order>
+            <children>
+                <items>
+                    <title>Newstore Groups</title>
+                    <sort_order>0</sort_order>
+                    <action>news/adminhtml_news</action>
+                </items>
+            </children>
+        </newstore>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <newstore translate="title" module="news">
+                        <title>News</title>
+                        <sort_order>0</sort_order>
+                        <children>
+                            <items module="news">
+                                <title>Newstore Groups</title>
+                                <sort_order>0</sort_order>
+                            </items>
+                        </children>
+                    </newstore>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
