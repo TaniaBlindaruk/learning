@@ -1,8 +1,1 @@
-/public/includes
-/public/media
-/public/var
-/public/errors/local.xml
-
-
-/logs/error.log
-../../../.idea
+.idea
