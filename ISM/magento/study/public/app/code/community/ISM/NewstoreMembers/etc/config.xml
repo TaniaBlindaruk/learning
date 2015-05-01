@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ISM_NewstoreMembers>
+            <version>0.0.1</version>
+        </ISM_NewstoreMembers>
+    </modules>
+</config>
