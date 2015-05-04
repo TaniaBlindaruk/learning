@@ -5,7 +5,7 @@
  * Date: 04.05.15
  * Time: 15:20
  */
-class ISM_NewstoreMembers_Adminhtml_NewstoreController extends Mage_Adminhtml_Controller_Action
+class ISM_NewstoreMembers_Adminhtml_MembersController extends Mage_Adminhtml_Controller_Action
 {
 
     public function indexAction()
@@ -13,7 +13,7 @@ class ISM_NewstoreMembers_Adminhtml_NewstoreController extends Mage_Adminhtml_Co
         $this->loadLayout();
         $this->_setActiveMenu('newstoremembers');
 
-        $contentBlock = $this->getLayout()->createBlock('newstoremembers/adminhtml_newstore');
+        $contentBlock = $this->getLayout()->createBlock('newstoremembers/adminhtml_members');
         $this->_addContent($contentBlock);
         $this->renderLayout();
     }

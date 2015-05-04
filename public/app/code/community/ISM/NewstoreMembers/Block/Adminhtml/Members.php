@@ -1,6 +1,6 @@
 <?php
 
-class ISM_NewstoreMembers_Block_Adminhtml_Newstore extends Mage_Adminhtml_Block_Abstract
+class ISM_NewstoreMembers_Block_Adminhtml_Members extends Mage_Adminhtml_Block_Abstract
 {
 
     public function _toHtml()

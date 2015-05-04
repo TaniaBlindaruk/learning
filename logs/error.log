@@ -8505,3 +8505,4 @@
 [Fri May 01 13:30:33.840793 2015] [autoindex:error] [pid 5671] [client 127.0.0.1:43220] AH01276: Cannot serve directory /home/tania/projects/study/ISM/magento/study/public/: No matching DirectoryIndex (index.html,index.cgi,index.pl,index.php,index.xhtml,index.htm) found, and server-generated directory index forbidden by Options directive
 [Fri May 01 13:33:40.290873 2015] [access_compat:error] [pid 5672] [client 127.0.0.1:43271] AH01797: client denied by server configuration: /home/tania/projects/study/ISM/magento/study/public/app/etc/local.xml
 [Fri May 01 13:33:46.711000 2015] [access_compat:error] [pid 5672] [client 127.0.0.1:43274] AH01797: client denied by server configuration: /home/tania/projects/study/ISM/magento/study/public/app/etc/local.xml
+[Mon May 04 20:09:21.796298 2015] [access_compat:error] [pid 1274] [client 127.0.0.1:55715] AH01797: client denied by server configuration: /home/tania/projects/study/public/app/etc/local.xml
