@@ -1,2 +1,0 @@
-# magento_study
-asd
