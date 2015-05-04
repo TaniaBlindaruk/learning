@@ -2,10 +2,6 @@
 
 $installer = $this;
 $tableNews = $installer->getTable('newstoremembers/table_newstoremembers');
-//$tableNews1=$installer->getTable('customer/entity');
-
-//die($tableNews1);
-
 $installer->startSetup();
 
 $installer->getConnection()->dropTable($tableNews);

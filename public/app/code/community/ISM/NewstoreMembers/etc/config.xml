@@ -18,9 +18,11 @@
         </blocks>
         <models>
             <newstoremembers>
+                <class>ISM_NewstoreMembers_Model</class>
                 <resourceModel>newstoremembers_resource</resourceModel>
             </newstoremembers>
             <newstoremembers_resource>
+                <class>ISM_NewstoreMembers_Model_Resource</class>
                 <entities>
                     <table_newstoremembers>
                         <table>ism_newstoremembers_entities</table>
