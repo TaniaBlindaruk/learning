@@ -5,4 +5,36 @@
             <version>0.0.1</version>
         </ISM_NewstoreMembers>
     </modules>
+    <global>
+        <helpers>
+            <newstoremembers>
+                <class>ISM_NewstoreMembers_Helper</class>
+            </newstoremembers>
+        </helpers>
+        <blocks>
+            <newstoremembers>
+                <class>ISM_NewstoreMembers_Block</class>
+            </newstoremembers>
+        </blocks>
+    </global>
+    <admin>
+        <routers>
+            <newstoremembers_admin>
+                <use>admin</use>
+                <args>
+                    <module>ISM_NewstoreMembers</module>
+                    <frontName>newstoremembers_admin</frontName>
+                </args>
+            </newstoremembers_admin>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <newstoremembers module="newstoremembers">
+                <title>Newstore Members</title>
+                <sort_order>77</sort_order>
+                <action>newstoremembers_admin/adminhtml_newstore</action>
+            </newstoremembers>
+        </menu>
+    </adminhtml>
 </config>
