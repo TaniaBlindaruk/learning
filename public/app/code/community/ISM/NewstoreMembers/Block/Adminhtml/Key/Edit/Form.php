@@ -42,24 +42,10 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Edit_Form extends Mage_Adminhtml_B
             'name' => 'expire_date',
             'required' => true
         ));
-        $modelCustomer = Mage::getModel('customer/customer')->getCollection();
-        foreach($modelCustomer as $item){
-//           echo "as";
-        }
         $fieldset->addField('publish', 'select', array(
             'label' => $helper->__('Publish'),
             'name' => 'publish',
-            'values' => array(
-                array(
-                    'value' => false,
-                    'label' => $helper->__('No'),
-                ),
-                array(
-                    'value' => true,
-                    'label' =>  $helper->__('Yes'),
-
-                )
-            ),
+            'values' => $helper->getMembersValue()
         ));
 
         $form->setUseContainer(true);
