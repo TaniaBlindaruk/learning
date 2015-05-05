@@ -36,5 +36,11 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Grid extends Mage_Adminhtml_Block_
             'type' => 'date',
         ));
     }
+    public function getRowUrl($model)
+    {
+        return $this->getUrl('*/*/edit', array(
+            'id' => $model->getId(),
+        ));
+    }
 
 }
