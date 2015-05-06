@@ -16,4 +16,14 @@
             </children>
         </newstoremembers>
     </menu>
+    <layout>
+        <updates>
+            <adminhtml_catalog_product_new>
+                <file>newstoremembers.xml</file>
+            </adminhtml_catalog_product_new>
+            <adminhtml_catalog_product_edit>
+                <file>newstoremembers.xml</file>
+            </adminhtml_catalog_product_edit>
+        </updates>
+    </layout>
 </config>
