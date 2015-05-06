@@ -19,18 +19,18 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Grid extends Mage_Adminhtml_Block_
             'header' => $helper->__('News ID'),
             'index' => 'id'
         ));
-        $this->addColumn('unique key', array(
+        $this->addColumn('unique_key', array(
             'header' => $helper->__('Unique Key'),
             'index' => 'unique_key',
             'type' => 'text',
         ));
-        $this->addColumn('Customer Id', array(
+        $this->addColumn('customer_id', array(
             'header' => $helper->__('Customer Id'),
             'index' => 'customer_id',
             'type' => 'text',
         ));
 
-        $this->addColumn('Expire date', array(
+        $this->addColumn('expire_date', array(
             'header' => $helper->__('Expire date'),
             'index' => 'expire_date',
             'type' => 'date',
