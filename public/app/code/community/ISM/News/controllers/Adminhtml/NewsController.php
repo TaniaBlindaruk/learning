@@ -2,6 +2,14 @@
 
 class ISM_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
 {
+    private function newOrEditAction(){
+        $id = (int) $this->getRequest()->getParam('id');
+        Mage::register('current_news', Mage::getModel('news/news')->load($id));
+
+        $this->loadLayout()->_setActiveMenu('news');
+        $this->_addContent($this->getLayout()->createBlock('news/adminhtml_news_edit'));
+        $this->renderLayout();
+    }
     public function indexAction()
     {
         $this->loadLayout()->_setActiveMenu('news');
@@ -11,17 +19,12 @@ class ISM_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Action
 
     public function newAction()
     {
-        $this->_forward('edit');
+        $this->newOrEditAction();
     }
 
     public function editAction()
     {
-        $id = (int) $this->getRequest()->getParam('id');
-        Mage::register('current_news', Mage::getModel('news/news')->load($id));
-
-        $this->loadLayout()->_setActiveMenu('news');
-        $this->_addContent($this->getLayout()->createBlock('news/adminhtml_news_edit'));
-        $this->renderLayout();
+        $this->newOrEditAction();
     }
 
     public function saveAction()
