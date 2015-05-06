@@ -26,8 +26,7 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     public function editAction()
     {
         $id = (int) $this->getRequest()->getParam('id');
-        Mage::register('key_info', Mage::getModel('newstoremembers/numbers')->load($id));
-
+        Mage::getSingleton('newstoremembers/numbers')->load($id);
         $this->loadLayout()->_setActiveMenu('newstoremembers');
         $this->_addContent($this->getLayout()->createBlock('newstoremembers/adminhtml_key_edit'));
         $this->renderLayout();
@@ -37,12 +36,8 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-                $model = Mage::getModel('newstoremembers/numbers');
-                $model->setData($data)->setId($this->getRequest()->getParam('id'));
-                if($model->getCustomerId()===''){
-                    $model->setCustomerId(null);
-                }
-                $model->save();
+                /**@var ISM_NewstoreMembers_Model_Numbers $model*/
+                Mage::getModel('newstoremembers/numbers')->setData($data)->save();
 
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);

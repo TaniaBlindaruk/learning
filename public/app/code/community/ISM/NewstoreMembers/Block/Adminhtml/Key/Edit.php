@@ -12,7 +12,7 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Edit extends Mage_Adminhtml_Block_
     public function getHeaderText()
     {
         $helper = Mage::helper('newstoremembers');
-        $model = Mage::registry('key_info');
+        $model = Mage::getSingleton('newstoremembers/numbers');
 
         if ($model->getId()) {
             return $helper->__("Edit Key '%s'", $this->escapeHtml($model->getTitle()));

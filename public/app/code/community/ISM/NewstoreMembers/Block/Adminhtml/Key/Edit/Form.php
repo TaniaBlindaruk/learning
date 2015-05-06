@@ -6,7 +6,7 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Edit_Form extends Mage_Adminhtml_B
     protected function _prepareForm()
     {
         $helper = Mage::helper('newstoremembers');
-        $model = Mage::registry('key_info');
+        $model = Mage::getSingleton('newstoremembers/numbers');
         if(!$model->getUniqueKey()) {
             $model->setUniqueKey(Mage::helper('core')->getRandomString(10));
         }
@@ -22,6 +22,9 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Edit_Form extends Mage_Adminhtml_B
         $this->setForm($form);
         $fieldset = $form->addFieldset('newstoremembers_form', array('legend' => $helper->__('Newstore Information')));
 
+        $fieldset->addField('id', 'hidden', array(
+            'name' => 'id'
+        ));
         $fieldset->addField('unique_key', 'text', array(
             'label' => $helper->__('Unique key'),
             'required' => true,

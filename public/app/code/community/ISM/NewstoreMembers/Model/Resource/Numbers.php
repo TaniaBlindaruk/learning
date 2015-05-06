@@ -8,4 +8,5 @@ class ISM_NewstoreMembers_Model_Resource_Numbers extends Mage_Core_Model_Resourc
         $this->_init('newstoremembers/newstoremembers', 'id');
     }
 
+
 }
