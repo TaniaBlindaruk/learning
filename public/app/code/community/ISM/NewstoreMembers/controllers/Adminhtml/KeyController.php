@@ -39,8 +39,8 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
             try {
                 $model = Mage::getModel('newstoremembers/numbers');
                 $model->setData($data)->setId($this->getRequest()->getParam('id'));
-                if(!$model->getCreated()){
-                    $model->setCreated(now());
+                if($model->getCustomerId()===''){
+                    $model->setCustomerId(null);
                 }
                 $model->save();
 

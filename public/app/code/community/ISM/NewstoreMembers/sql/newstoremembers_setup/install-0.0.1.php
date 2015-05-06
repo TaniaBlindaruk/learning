@@ -18,6 +18,7 @@ $table = $installer->getConnection()
     ))
     ->addColumn('customer_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
         'nullable'  => true,
+        'default'   =>null
     ))
     ->addColumn('expire_date', Varien_Db_Ddl_Table::TYPE_DATE, null, array(
         'nullable'  => true,
