@@ -1,7 +1,7 @@
 <?php
 /** @var Mage_Core_Model_Resource_Setup $installer */
 $installer = $this;
-$tableNews = $installer->getTable('newstoremembers/table_newstoremembers');
+$tableNews = $installer->getTable('newstoremembers/newstoremembers');
 $installer->startSetup();
 
 $installer->getConnection()->dropTable($tableNews);
@@ -23,7 +23,7 @@ $table = $installer->getConnection()
         'nullable'  => true,
     ))
     ->addForeignKey(
-        $installer->getFkName('newstoremembers/table_newstoremembers', 'customer_id', 'customer/entity', 'entity_id'),
+        $installer->getFkName('newstoremembers/newstoremembers', 'customer_id', 'customer/entity', 'entity_id'),
         'customer_id',
         $installer->getTable('customer/entity'),
         'entity_id',

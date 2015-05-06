@@ -24,9 +24,9 @@
             <newstoremembers_resource>
                 <class>ISM_NewstoreMembers_Model_Resource</class>
                 <entities>
-                    <table_newstoremembers>
-                        <table>ism_newstoremembers_entities</table>
-                    </table_newstoremembers>
+                    <newstoremembers>
+                        <table>ism_newstoremembers_newstoremembers</table>
+                    </newstoremembers>
                 </entities>
             </newstoremembers_resource>
         </models>
