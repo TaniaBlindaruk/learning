@@ -5,7 +5,7 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Grid extends Mage_Adminhtml_Block_
 
     protected function _prepareCollection()
     {
-        $collection = Mage::getModel('newstoremembers/newstore')->getCollection();
+        $collection = Mage::getModel('newstoremembers/numbers')->getCollection();
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }

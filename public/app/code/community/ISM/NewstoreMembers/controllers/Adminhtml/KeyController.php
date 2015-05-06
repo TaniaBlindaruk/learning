@@ -26,7 +26,7 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     public function editAction()
     {
         $id = (int) $this->getRequest()->getParam('id');
-        Mage::register('key_info', Mage::getModel('newstoremembers/newstore')->load($id));
+        Mage::register('key_info', Mage::getModel('newstoremembers/numbers')->load($id));
 
         $this->loadLayout()->_setActiveMenu('newstoremembers');
         $this->_addContent($this->getLayout()->createBlock('newstoremembers/adminhtml_key_edit'));
@@ -37,7 +37,7 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-                $model = Mage::getModel('newstoremembers/newstore');
+                $model = Mage::getModel('newstoremembers/numbers');
                 $model->setData($data)->setId($this->getRequest()->getParam('id'));
                 if(!$model->getCreated()){
                     $model->setCreated(now());
@@ -64,7 +64,7 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     {
         if ($id = $this->getRequest()->getParam('id')) {
             try {
-                Mage::getModel('newstoremembers/newstore')->setId($id)->delete();
+                Mage::getModel('newstoremembers/numbers')->setId($id)->delete();
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was deleted successfully'));
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
