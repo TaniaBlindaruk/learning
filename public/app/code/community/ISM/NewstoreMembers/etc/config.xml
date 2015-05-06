@@ -40,13 +40,20 @@
     </global>
     <admin>
         <routers>
-            <newstoremembers_admin>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>ISM_NewstoreMembers</module>
-                    <frontName>newstoremembers_admin</frontName>
+                    <modules>
+                        <ISM_NewstoreMembers_Adminhtml before="Mage_Adminhtml">ISM_NewstoreMembers_Adminhtml</ISM_NewstoreMembers_Adminhtml>
+                    </modules>
                 </args>
-            </newstoremembers_admin>
+            </adminhtml>
+            <!--<newstoremembers_admin>-->
+                <!--<use>admin</use>-->
+                <!--<args>-->
+                    <!--<module>ISM_NewstoreMembers</module>-->
+                    <!--<frontName>newstoremembers_admin</frontName>-->
+                <!--</args>-->
+            <!--</newstoremembers_admin>-->
         </routers>
     </admin>
 </config>

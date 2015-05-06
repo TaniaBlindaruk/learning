@@ -7,11 +7,11 @@
             <children>
                 <newstoremember module="newstoremembers">
                     <title>Newstore Members</title>
-                    <action>newstoremembers_admin/adminhtml_members</action>
+                    <action>adminhtml/members</action>
                 </newstoremember>
                 <newstorekey module="newstoremembers">
                     <title>Newstore Key</title>
-                    <action>newstoremembers_admin/adminhtml_key</action>
+                    <action>adminhtml/key</action>
                 </newstorekey>
             </children>
         </newstoremembers>
