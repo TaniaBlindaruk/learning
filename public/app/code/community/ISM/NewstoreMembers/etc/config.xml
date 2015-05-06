@@ -47,13 +47,6 @@
                     </modules>
                 </args>
             </adminhtml>
-            <!--<newstoremembers_admin>-->
-                <!--<use>admin</use>-->
-                <!--<args>-->
-                    <!--<module>ISM_NewstoreMembers</module>-->
-                    <!--<frontName>newstoremembers_admin</frontName>-->
-                <!--</args>-->
-            <!--</newstoremembers_admin>-->
         </routers>
     </admin>
 </config>

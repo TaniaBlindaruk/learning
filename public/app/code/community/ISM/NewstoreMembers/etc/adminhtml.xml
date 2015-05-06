@@ -16,6 +16,26 @@
             </children>
         </newstoremembers>
     </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <ism_newstoremembers translate="title" module="newstoremembers">
+                        <title>Newstore Members</title>
+                        <sort_order>0</sort_order>
+                        <children>
+                            <newstoremember module="newstoremembers">
+                                <title>Newstore Members</title>
+                            </newstoremember>
+                            <newstorekey module="newstoremembers">
+                                <title>Newstore Key</title>
+                            </newstorekey>
+                        </children>
+                    </ism_newstoremembers>
+                </children>
+            </admin>
+        </resources>
+    </acl>
     <layout>
         <updates>
             <adminhtml_catalog_product_new>
