@@ -20,7 +20,7 @@
         <resources>
             <admin>
                 <children>
-                    <ism_newstoremembers translate="title" module="newstoremembers">
+                    <newstoremembers translate="title" module="newstoremembers">
                         <title>Newstore Members</title>
                         <sort_order>0</sort_order>
                         <children>
@@ -31,19 +31,9 @@
                                 <title>Newstore Key</title>
                             </newstorekey>
                         </children>
-                    </ism_newstoremembers>
+                    </newstoremembers>
                 </children>
             </admin>
         </resources>
     </acl>
-    <layout>
-        <updates>
-            <adminhtml_catalog_product_new>
-                <file>newstoremembers.xml</file>
-            </adminhtml_catalog_product_new>
-            <adminhtml_catalog_product_edit>
-                <file>newstoremembers.xml</file>
-            </adminhtml_catalog_product_edit>
-        </updates>
-    </layout>
 </config>
