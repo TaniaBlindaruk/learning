@@ -36,9 +36,17 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-                /**@var ISM_NewstoreMembers_Model_Numbers $model*/
                 Mage::getModel('newstoremembers/numbers')->setData($data)->save();
-
+                /**@var $customers Mage_Customer_Model_Resource_Customer_Collection */
+//                $idCustomer = $data['customer_id']||null;
+//                $customers = Mage::getModel('customer/customer')
+//                    ->getCollection()
+//                ->;
+////                    ->addFilter("id = $idCustomer")
+////                    ;
+//                foreach($customers as $custom){
+//                    echo "asd";
+//                }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 $this->_redirect('*/*/');
