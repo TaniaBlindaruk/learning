@@ -27,6 +27,9 @@
                     <newstoremembers>
                         <table>ism_newstoremembers_numbers</table>
                     </newstoremembers>
+                    <!--<group_id>-->
+                        <!--<table>ism_newstoremembers_group_id</table>-->
+                    <!--</group_id>-->
                 </entities>
             </newstoremembers_resource>
         </models>
@@ -50,4 +53,14 @@
             </adminhtml>
         </routers>
     </admin>
+
+    <frontend>
+        <layout>
+            <updates>
+                <myacount>
+                    <file>newstoremembers.xml</file>
+                </myacount>
+            </updates>
+        </layout>
+    </frontend>
 </config>
