@@ -1,7 +1,6 @@
 <?php
 /* @var $installer Mage_Catalog_Model_Resource_Setup */
 $installer = $this;
-dir("ASD");
 $catalogProduct = 'catalog_product';
 $attribute_code = 'ism_newstoremembers_price';
 $installer->addAttribute($catalogProduct,$attribute_code , array(
@@ -32,3 +31,7 @@ $attribute_id=$installer->getAttributeId($catalogProduct, $attribute_code);
 
 $installer->addAttributeToSet($catalogProduct,$attribute_set_id, $attribute_group_id, $attribute_id);
 $installer->endSetup();
+
+Mage::getSingleton('customer/group')->setData(
+    array('customer_group_code' => 'NewstoreMembers Group','tax_class_id' => 3))
+    ->save();
