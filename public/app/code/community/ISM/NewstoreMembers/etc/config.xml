@@ -57,10 +57,19 @@
     <frontend>
         <layout>
             <updates>
-                <myacount>
+                <newstoremembers>
                     <file>newstoremembers.xml</file>
-                </myacount>
+                </newstoremembers>
             </updates>
         </layout>
+        <routers>
+            <newstoremembers>
+                <use>standard</use>
+                <args>
+                    <module>ISM_NewstoreMembers</module>
+                    <frontName>newstoremembers</frontName>
+                </args>
+            </newstoremembers>
+        </routers>
     </frontend>
 </config>

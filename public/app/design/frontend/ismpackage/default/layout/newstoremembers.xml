@@ -1,12 +1,24 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <layout>
-<customer_account>
-    <reference name="customer_account_navigation">
-        <action method="addLink" translate="label" module="oauth">
-            <name>Name</name>
-            <!--<path>oauth/customer_token</path>-->
-            <label>NuwstoreMember Number</label>
-        </action>
-    </reference>
-</customer_account>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="newstoremembers">
+                <name>newstoremembers</name>
+                <path>newstoremembers/number</path>
+                <label>Newstore Members</label>
+            </action>
+        </reference>
+    </customer_account>
+    <!--<customer_account_edit translate="label">-->
+        <!--<reference name="my.account.wrapper">-->
+            <!--<block type="customer/form_edit" name="customer_edit" template="newstoremembers/form/edit.phtml"/>-->
+        <!--</reference>-->
+    <!--</customer_account_edit>-->
+    <!--<newstoremembers_number_index translate="label">-->
+        <!--<label>Customer My Account My OAuth Applications</label>-->
+        <!--<update handle="customer_account"/>-->
+        <!--<reference name="my.account.wrapper">-->
+            <!--<block type="oauth/customer_token_list" name="oauth_customer_token_list" template="oauth/customer/token/list.phtml"/>-->
+        <!--</reference>-->
+    <!--</newstoremembers_number_index>-->
 </layout>
