@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: tania
@@ -11,13 +12,12 @@ class ISM_NewstoreMembers_NumberController extends Mage_Core_Controller_Front_Ac
     public function indexAction()
     {
         $this->loadLayout();
-        $this->_initLayoutMessages('catalog/session');
-
-        $this->getLayout()->getBlock('head')->setTitle($this->__('My Orders'));
-
-        if ($block = $this->getLayout()->getBlock('customer.account.link.back')) {
-            $block->setRefererUrl($this->_getRefererUrl());
-        }
         $this->renderLayout();
+    }
+
+    public function savePostAction()
+    {
+        $data = $this->getRequest()->getPost();
+        $this->_forward('index');
     }
 }

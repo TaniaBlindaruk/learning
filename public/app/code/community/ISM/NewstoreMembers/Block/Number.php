@@ -1,6 +1,6 @@
 <?php
 
-class ISM_News_Block_Number extends Mage_Core_Block_Template
+class ISM_NewstoreMembers_Block_Number extends Mage_Core_Block_Template
 {
 
 }

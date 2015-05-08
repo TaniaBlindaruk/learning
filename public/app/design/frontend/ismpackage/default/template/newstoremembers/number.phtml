@@ -1,0 +1,32 @@
+<?php
+?>
+<div class="page-title">
+    <h1><?php echo $this->__('NewstoreMember') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<form action="<?php echo $this->getUrl('newstoremembers/number/savePost') ?>" method="post" id="form-validate"
+      autocomplete="off">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Newstore Members') ?></h2>
+        <ul class="form-list">
+            <li>
+                <label for="email" class="required"></label>
+                <label class="required">
+                    <?php echo $this->__('Number') ?>
+                    <input type="text" name="number" id="number" value="" title=""
+                           class="input-text required-entry validate-email"/>
+                </label>
+            </li>
+        </ul>
+        <div class="buttons-set">
+            <p class="back-link">
+                <a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>">
+                    <small>&laquo; </small><?php echo $this->__('Back') ?>
+                </a>
+            </p>
+            <button type="submit" title="<?php echo $this->__('Save') ?>" class="button">
+                <span><span><?php echo $this->__('Save') ?></span></span>
+            </button>
+        </div>
+    </div>
+</form>
