@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <config>
     <sections>
-        <newstoremembers_section module="newstoremembers" translate="label">
+        <newstoremembers module="newstoremembers" translate="label">
             <label>NewstoreMembers</label>
             <sort_order>200</sort_order>
             <show_in_default>1</show_in_default>
@@ -9,7 +9,7 @@
             <show_in_store>1</show_in_store>
             <tab>sales</tab>
             <groups>
-                <mycustom_group translate="label">
+                <newstoremembers_group translate="label">
                     <label>NewstoreMembers Group</label>
                     <!--<comment>Some comment about my group</comment>-->
                     <sort_order>10</sort_order>
@@ -17,19 +17,20 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <mycustom_field translate="label tooltip comment">
+                        <newstoremembers_field_group translate="label tooltip comment">
                             <label>Group</label>
-                            <comment>Some comment about my field</comment>
+                            <!--<comment>Some comment about my field</comment>-->
                             <!--<tooltip>Field ToolTip</tooltip>-->
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                             <source_model>adminhtml/system_config_source_customer_group</source_model>
                             <frontend_type>select</frontend_type>
-                        </mycustom_field>
+                        </newstoremembers_field_group>
                     </fields>
-                </mycustom_group>
+                </newstoremembers_group>
             </groups>
-        </newstoremembers_section>
+        </newstoremembers>
     </sections>
 </config>
+<!--Mage::getStoreConfig('mycustom_section/mycustom_group/mycustom_field');-->
