@@ -4,7 +4,7 @@
         <reference name="customer_account_navigation">
             <action method="addLink" translate="label" module="newstoremembers">
                 <name>newstoremembers</name>
-                <path>newstoremembers/number/index</path>
+                <path>newstoremembers/number</path>
                 <label>Newstore Members</label>
             </action>
         </reference>

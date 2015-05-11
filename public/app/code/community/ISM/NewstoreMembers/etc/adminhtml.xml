@@ -20,6 +20,18 @@
         <resources>
             <admin>
                 <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <newstoremembers_section translate="title" module="newstoremembers">
+                                        <title>My Custom Section</title>
+                                        <sort_order>100</sort_order>
+                                    </newstoremembers_section>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
                     <newstoremembers translate="title" module="newstoremembers">
                         <title>Newstore Members</title>
                         <sort_order>0</sort_order>
