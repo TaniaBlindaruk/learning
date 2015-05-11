@@ -3,8 +3,8 @@
 <div class="page-title">
     <h1><?php echo $this->__('NewstoreMember') ?></h1>
 </div>
-<?php echo $this->getMessagesBlock()->toHtml() ?>
-<form action="<?php echo $this->getUrl('newstoremembers/number/savePost') ?>" method="post" id="form-validate"
+<?php if (!$this->checkUserNewstoreMember()): ?>
+<form action="<?php echo $this->getUrl('newstoremembers/number/savePost') ?>" method="post" id="formValidate"
       autocomplete="off">
     <div class="fieldset">
         <h2 class="legend"><?php echo $this->__('Newstore Members') ?></h2>
@@ -14,7 +14,7 @@
                 <label class="required">
                     <?php echo $this->__('Number') ?>
                     <input type="text" name="number" id="number" value="" title=""
-                           class="input-text required-entry validate-email"/>
+                           class="input-text required-entry"/>
                 </label>
             </li>
         </ul>
@@ -30,3 +30,56 @@
         </div>
     </div>
 </form>
+<?php endif; ?>
+<?php if ($this->checkUserNewstoreMember()): ?>
+    <label for="newstoremembers"><?php echo $this->__('You are member!') ?></label>
+<?php endif; ?>
+<script type="text/javascript">
+    //<![CDATA[
+    var productAddToCartForm = new VarienForm('formValidate');
+    productAddToCartForm.submit = function(button, url) {
+        if (this.validator.validate()) {
+            var form = this.form;
+            var oldUrl = form.action;
+
+            if (url) {
+                form.action = url;
+            }
+            var e = null;
+            try {
+                var transformValue = {};
+
+                if ( Modernizr.csstransforms3d ) {
+                    transformValue[Modernizr.prefixed('transform')] = 'translate3d(-82px, -106px, 2px) scale(0) rotate(200deg)';
+                } else if ( Modernizr.csstransforms ) {
+                    transformValue[Modernizr.prefixed('transform')] = 'translate(-82px, -106px) scale(0) rotate(200deg)';
+                } else {
+                    this.form.submit();
+                    return false;
+                }
+
+                var originalImg = $$('.product-image-wrap .product-image img')[0];
+                originalImg.up('.product-image-wrap').insert(originalImg.clone().addClassName('cloned'));
+
+                setTimeout(function () {
+                    $$('.cloned')[0].setStyle(transformValue);
+                }, 1);
+                $$('.product-image-wrap .cloned')[0].observe(transEndEventName, function(e) {
+                    this.form.submit();
+                }.bind(this));
+
+            } catch (e) {
+            }
+            this.form.action = oldUrl;
+            if (e) {
+                throw e;
+            }
+
+            if (button && button != 'undefined') {
+                button.disabled = true;
+            }
+        }
+    }.bind(productAddToCartForm);
+
+    //]]>
+</script>
