@@ -32,7 +32,17 @@ $attribute_id=$installer->getAttributeId($catalogProduct, $attribute_code);
 $installer->addAttributeToSet($catalogProduct,$attribute_set_id, $attribute_group_id, $attribute_id);
 $installer->endSetup();
 
-Mage::getModel('customer/group')->setData(
+$group=Mage::getModel('customer/group')->setData(
     array('customer_group_code' => 'NewstoreMembers Group','tax_class_id' => 3))
     ->save();
 
+
+$groups_value = array();
+
+$groups_value['newstoremembers_group']['fields']['newstoremembers_field_group']['value'] = $group->getId();
+Mage::getModel('adminhtml/config_data')
+    ->setSection('newstoremembers')
+    ->setWebsite(null)
+    ->setStore(null)
+    ->setGroups($groups_value)
+    ->save();
