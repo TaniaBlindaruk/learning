@@ -38,15 +38,15 @@
                 </setup>
             </newstoremembers_setup>
         </resources>
-        <fieldsets>
-            <sales_convert_quote>
-                <newstoremembers_number>
-                    <create>1</create>
-                    <update>1</update>
-                    <to_order>*</to_order>
-                </newstoremembers_number>
-            </sales_convert_quote>
-        </fieldsets>
+        <!--<fieldsets>-->
+            <!--<sales_convert_quote>-->
+                <!--<newstoremembers_number>-->
+                    <!--<create>1</create>-->
+                    <!--<update>1</update>-->
+                    <!--<to_order>*</to_order>-->
+                <!--</newstoremembers_number>-->
+            <!--</sales_convert_quote>-->
+        <!--</fieldsets>-->
     </global>
     <admin>
         <routers>
@@ -73,7 +73,7 @@
             <checkout_type_onepage_save_order_after>
                 <observers>
                     <newstoremembers_checkout_type_onepage_save_order_after>
-                        <type>model</type>
+                        <type>singlton</type>
                         <class>newstoremembers/observer</class>
                         <method>checkoutTypeOnepageSaveOrderAfter</method>
                     </newstoremembers_checkout_type_onepage_save_order_after>
