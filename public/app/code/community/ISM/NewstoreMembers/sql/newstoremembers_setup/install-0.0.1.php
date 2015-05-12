@@ -37,18 +37,18 @@ $installer->getConnection()->createTable($table);
 
 $installer->getConnection()
     ->addColumn(
-        "sales_flat_order", "newtoremembers_number", array(
+        "sales_flat_order", "newstoremembers_number", array(
             'nullable' => true,
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
-            'comment' => 'Newtoremembers Number'
+            'comment' => 'Newstoremembers Number'
         )
     );
 $installer->getConnection()
     ->addColumn(
-        "sales_flat_quote", "newtoremembers_number", array(
+        "sales_flat_quote", "newstoremembers_number", array(
             'nullable' => true,
             'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
-            'comment' => 'Newtoremembers Number'
+            'comment' => 'Newstoremembers Number'
         )
     );
 $installer->endSetup();
