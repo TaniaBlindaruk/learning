@@ -35,4 +35,20 @@ $table = $installer->getConnection()
 
 $installer->getConnection()->createTable($table);
 
+$installer->getConnection()
+    ->addColumn(
+        "sales_flat_order", "newtoremembers_number", array(
+            'nullable' => true,
+            'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
+            'comment' => 'Newtoremembers Number'
+        )
+    );
+$installer->getConnection()
+    ->addColumn(
+        "sales_flat_quote", "newtoremembers_number", array(
+            'nullable' => true,
+            'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
+            'comment' => 'Newtoremembers Number'
+        )
+    );
 $installer->endSetup();

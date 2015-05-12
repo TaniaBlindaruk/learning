@@ -38,6 +38,25 @@
                 </setup>
             </newstoremembers_setup>
         </resources>
+        <!--<fieldsets>-->
+            <!--<customer_account>-->
+                <!--<number>-->
+                    <!--<to_order>newtoremembers_number</to_order>-->
+                <!--</number>-->
+            <!--</customer_account>-->
+        <!--</fieldsets>-->
+        <fieldsets>
+            <!--<sales_convert_order>-->
+                <!--<newstore_number><to_quote>newtoremembers_number</to_quote></newstore_number>-->
+            <!--</sales_convert_order>-->
+
+            <sales_convert_quote>
+                <newtoremembers>
+                    <to_order>newtoremembers_number</to_order>
+                </newtoremembers>
+            </sales_convert_quote>
+        </fieldsets>
+
     </global>
     <admin>
         <routers>
@@ -51,6 +70,17 @@
         </routers>
     </admin>
     <frontend>
+        <events>
+            <checkout_type_onepage_save_order_after>
+                <observers>
+                    <newstoremembers_checkout_type_onepage_save_order_after>
+                        <type>model</type>
+                        <class>newstoremembers/observer</class>
+                        <method>checkoutTypeOnepageSaveOrderAfter</method>
+                    </newstoremembers_checkout_type_onepage_save_order_after>
+                </observers>
+            </checkout_type_onepage_save_order_after>
+        </events>
         <layout>
             <updates>
                 <newstoremembers>
