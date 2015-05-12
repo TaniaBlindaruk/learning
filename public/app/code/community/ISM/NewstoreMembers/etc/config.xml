@@ -73,7 +73,7 @@
             <checkout_type_onepage_save_order_after>
                 <observers>
                     <newstoremembers_checkout_type_onepage_save_order_after>
-                        <type>singlton</type>
+                        <type>model</type>
                         <class>newstoremembers/observer</class>
                         <method>checkoutTypeOnepageSaveOrderAfter</method>
                     </newstoremembers_checkout_type_onepage_save_order_after>
