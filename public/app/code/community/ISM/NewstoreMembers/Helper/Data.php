@@ -21,25 +21,25 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
         return $result;
     }
 
-    public function getNewstoreMembersGroupId(){
+    public function getNewstoreMembersGroupId()
+    {
         return Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group');
     }
+
     public function setUserGroup($idCustomer)
     {
-        $customer  = Mage::getModel('customer/customer')
+        $customer = Mage::getModel('customer/customer')
             ->load($idCustomer, 'entity_id');
         $prevGroupId = $customer->getGroupId();
-        if($prevGroupId !==$this->getNewstoreMembersGroupId()){
+        if ($prevGroupId !== $this->getNewstoreMembersGroupId()) {
             $customer->setPrevGroupId($prevGroupId);
         }
         $customer->setGroupId($this->getNewstoreMembersGroupId())->save();
     }
 
-    private function checkNewstoreMembersGroupUser($idCustomer)
+    private function checkNewstoreMembersGroupUser($idGroup)
     {
-        if (Mage::getModel('customer/customer')
-                ->load($idCustomer, 'entity_id')
-                ->getGroupId() === Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group')
+        if ($idGroup === $this->getNewstoreMembersGroupId()
         ) {
             return false;
         }
@@ -50,13 +50,14 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
     {
         /**@var $collection ISM_NewstoreMembers_Model_Resource_Numbers_Collection */
         $collection = Mage::getModel('newstoremembers/numbers')->getCollection();
-        $var = $collection->getItemsByColumnValue('unique_key', $number);
-
-        $customerId = Mage::getModel('customer/session')->getCustomer()->getEntityId();
-        if (isset($var[0]) && $this->checkNewstoreMembersGroupUser($customerId) && !$var[0]['customer_id']) {
+        $var = $collection->getItemByColumnValue('unique_key', $number);
+        /**@var $customer Mage_Customer_Model_Customer */
+        $customer = Mage::getModel('customer/session')->getCustomer();
+        $customerId = $customer->getEntityId();
+        if ($this->checkNewstoreMembersGroupUser($customer->getGroupId()) && !$var['customer_id']) {
             $this->setUserGroup($customerId);
-            $var[0]['customer_id'] = $customerId;
-            Mage::getModel('newstoremembers/numbers')->setData($var[0]->toArray())->save();
+            $var['customer_id'] = $customerId;
+            Mage::getModel('newstoremembers/numbers')->setData($var->toArray())->save();
         }
     }
 
