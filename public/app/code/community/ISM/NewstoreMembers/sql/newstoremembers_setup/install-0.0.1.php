@@ -39,7 +39,8 @@ $installer->getConnection()
     ->addColumn(
         "sales_flat_order", "newstoremembers_number", array(
             'nullable' => true,
-            'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
+            'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
+            'length'=>255,
             'comment' => 'Newstoremembers Number'
         )
     );
@@ -47,8 +48,10 @@ $installer->getConnection()
     ->addColumn(
         "sales_flat_quote", "newstoremembers_number", array(
             'nullable' => true,
-            'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
+            'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
+            'length'=>255,
             'comment' => 'Newstoremembers Number'
         )
     );
+
 $installer->endSetup();
