@@ -39,13 +39,12 @@
             </newstoremembers_setup>
         </resources>
         <fieldsets>
-            <sales_convert_quote>
-                <newstoremembers_number>
+            <customer_account>
+                <prev_group_id>
                     <create>1</create>
                     <update>1</update>
-                    <to_order>*</to_order>
-                </newstoremembers_number>
-            </sales_convert_quote>
+                </prev_group_id>
+            </customer_account>
         </fieldsets>
     </global>
     <admin>
@@ -97,4 +96,16 @@
             </newstoremembers>
         </routers>
     </frontend>
+    <!--<crontab>-->
+        <!--<jobs>-->
+            <!--<newstoremembers>-->
+                <!--<schedule>-->
+                    <!--<cron_expr>0 1 * * *</cron_expr>-->
+                <!--</schedule>-->
+                <!--<run>-->
+                    <!--<model>newstoremembers/observer::dailyCatalogUpdate</model>-->
+                <!--</run>-->
+            <!--</newstoremembers>-->
+        <!--</jobs>-->
+    <!--</crontab>-->
 </config>

@@ -40,7 +40,6 @@ $installer->getConnection()
         "sales_flat_order", "newstoremembers_number", array(
             'nullable' => true,
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
-            'length'=>255,
             'comment' => 'Newstoremembers Number'
         )
     );
@@ -49,8 +48,16 @@ $installer->getConnection()
         "sales_flat_quote", "newstoremembers_number", array(
             'nullable' => true,
             'type' => Varien_Db_Ddl_Table::TYPE_TEXT,
-            'length'=>255,
             'comment' => 'Newstoremembers Number'
+        )
+    );
+
+$installer->getConnection()
+    ->addColumn(
+        $installer->getTable('customer/entity'), "prev_group_id", array(
+            'nullable' => true,
+            'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
+            'comment' => 'Previous Group Id'
         )
     );
 
