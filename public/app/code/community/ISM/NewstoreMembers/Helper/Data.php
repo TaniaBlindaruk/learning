@@ -50,14 +50,15 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
     {
         /**@var $collection ISM_NewstoreMembers_Model_Resource_Numbers_Collection */
         $collection = Mage::getModel('newstoremembers/numbers')->getCollection();
-        $var = $collection->getItemByColumnValue('unique_key', $number);
+        $newstoreRow = $collection->getItemByColumnValue('unique_key', $number);
+        $newstoreRow = $newstoreRow->toArray();
         /**@var $customer Mage_Customer_Model_Customer */
         $customer = Mage::getModel('customer/session')->getCustomer();
         $customerId = $customer->getEntityId();
-        if ($this->checkNewstoreMembersGroupUser($customer->getGroupId()) && !$var['customer_id']) {
+        if ($this->checkNewstoreMembersGroupUser($customer->getGroupId()) && !$newstoreRow['customer_id']) {
             $this->setUserGroup($customerId);
-            $var['customer_id'] = $customerId;
-            Mage::getModel('newstoremembers/numbers')->setData($var->toArray())->save();
+            $newstoreRow['customer_id'] = $customerId;
+            Mage::getModel('newstoremembers/numbers')->setData($newstoreRow)->save();
         }
     }
 
