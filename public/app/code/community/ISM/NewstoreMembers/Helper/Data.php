@@ -21,12 +21,18 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
         return $result;
     }
 
+    public function getNewstoreMembersGroupId(){
+        return Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group');
+    }
     public function setUserGroup($idCustomer)
     {
-        Mage::getModel('customer/customer')->load($idCustomer, 'entity_id')
-            ->setPrevGroupId(12)
-            ->setGroupId(Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group'))
-            ->save();
+        $customer  = Mage::getModel('customer/customer')
+            ->load($idCustomer, 'entity_id');
+        $prevGroupId = $customer->getGroupId();
+        if($prevGroupId !==$this->getNewstoreMembersGroupId()){
+            $customer->setPrevGroupId($prevGroupId);
+        }
+        $customer->setGroupId($this->getNewstoreMembersGroupId())->save();
     }
 
     private function checkNewstoreMembersGroupUser($idCustomer)
