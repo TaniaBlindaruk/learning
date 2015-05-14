@@ -15,4 +15,11 @@
             <block type="newstoremembers/number" name="newstoremembers_number_push" template="newstoremembers/number.phtml"/>
         </reference>
     </newstoremembers_number_index>
+
+    <checkout_cart_index>
+        <reference name="checkout.cart.form.before">
+            <block type="newstoremembers/number" name="newstoremembers_number_push" template="newstoremembers/cart.phtml"/>
+        </reference>
+    </checkout_cart_index>
+
 </layout>

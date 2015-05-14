@@ -4,12 +4,6 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Grid extends Mage_Adminhtml_Block_
 {
 
     protected function _prepareCollection() {
-//
-//        $collection = Mage::getModel('newstoremembers/numbers')->getCollection();
-//        $this->setCollection($collection);
-//        return parent::_prepareCollection();
-
-
         /**@var $collection ISM_NewstoreMembers_Model_Resource_Numbers_Collection*/
         $collection = Mage::getModel('newstoremembers/numbers')
             ->getCollection();
@@ -20,13 +14,13 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Grid extends Mage_Adminhtml_Block_
         $collection->getSelect()
             ->columns(new Zend_Db_Expr("CONCAT(`cev1`.`value`, ' ',"
                 . "`cev2`.`value`) AS fullname"))
-            ->join(array('ce' => 'customer_entity'),
+            ->joinLeft(array('ce' => 'customer_entity'),
                 'ce.entity_id=main_table.customer_id',
                 array('email' => 'email'))
-            ->join(array('cev1' => 'customer_entity_varchar'),
+            ->joinLeft(array('cev1' => 'customer_entity_varchar'),
                 'cev1.entity_id=main_table.customer_id',
                 array('firstname' => 'value'))
-            ->join(array('cev2' => 'customer_entity_varchar'),
+            ->joinLeft(array('cev2' => 'customer_entity_varchar'),
                 'cev2.entity_id=main_table.customer_id',
                 array('lastname' => 'value'))
 
