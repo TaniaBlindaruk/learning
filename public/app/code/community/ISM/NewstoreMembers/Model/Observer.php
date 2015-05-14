@@ -11,6 +11,5 @@ class ISM_NewstoreMembers_Model_Observer {
             $observer->getOrder()->setNewstoremembersNumber($key)->save();
             $observer->getQuote()->setNewstoremembersNumber($key)->save();
         }
-
     }
 }

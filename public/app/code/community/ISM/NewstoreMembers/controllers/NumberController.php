@@ -13,8 +13,10 @@ class ISM_NewstoreMembers_NumberController extends Mage_Core_Controller_Front_Ac
     {
         $data = $this->getRequest()->getPost();
         /**@var $helper ISM_NewstoreMembers_Helper_Data*/
-        $helper = Mage::helper('newstoremembers');
-        $helper->setMemberAndGroup($data['number']);
+        if(isset($data['number'])) {
+            $helper = Mage::helper('newstoremembers');
+            $helper->setMemberAndGroup($data['number']);
+        }
         $this->loadLayout();
         $this->renderLayout();
     }
@@ -29,7 +31,4 @@ class ISM_NewstoreMembers_NumberController extends Mage_Core_Controller_Front_Ac
         $this->renderLayout();
         $this->_redirect('checkout/cart/');
     }
-
-
-
 }

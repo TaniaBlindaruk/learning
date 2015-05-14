@@ -5,27 +5,27 @@ class ISM_NewstoreMembers_Block_Adminhtml_Key_Grid extends Mage_Adminhtml_Block_
 
     protected function _prepareCollection() {
         /**@var $collection ISM_NewstoreMembers_Model_Resource_Numbers_Collection*/
+
         $collection = Mage::getModel('newstoremembers/numbers')
             ->getCollection();
-        $firstName = Mage::getModel('eav/entity_attribute')
-            ->loadByCode('1', 'firstname');
-        $lastName = Mage::getModel('eav/entity_attribute')
-            ->loadByCode('1', 'lastname');
-        $collection->getSelect()
-            ->columns(new Zend_Db_Expr("CONCAT(`cev1`.`value`, ' ',"
-                . "`cev2`.`value`) AS fullname"))
-            ->joinLeft(array('ce' => 'customer_entity'),
-                'ce.entity_id=main_table.customer_id',
-                array('email' => 'email'))
-            ->joinLeft(array('cev1' => 'customer_entity_varchar'),
-                'cev1.entity_id=main_table.customer_id',
-                array('firstname' => 'value'))
-            ->joinLeft(array('cev2' => 'customer_entity_varchar'),
-                'cev2.entity_id=main_table.customer_id',
-                array('lastname' => 'value'))
-
-            ->where('cev1.attribute_id=' . $firstName->getAttributeId())
-            ->where('cev2.attribute_id=' . $lastName->getAttributeId());
+//        $firstName = Mage::getModel('eav/entity_attribute')
+//            ->loadByCode('1', 'firstname');
+//        $lastName = Mage::getModel('eav/entity_attribute')
+//            ->loadByCode('1', 'lastname');
+//        $collection->getSelect()
+//            ->columns(new Zend_Db_Expr("CONCAT(`cev1`.`value`, ' ',"
+//                . "`cev2`.`value`) AS fullname"))
+//            ->joinLeft(array('ce' => 'customer_entity'),
+//                'ce.entity_id=main_table.customer_id',
+//                array('email' => 'email'))
+//            ->joinRight(array('cev1' => 'customer_entity_varchar'),
+//                'cev1.entity_id=main_table.customer_id',
+//                array('firstname' => 'value'))
+//            ->joinRight(array('cev2' => 'customer_entity_varchar'),
+//                'cev2.entity_id=main_table.customer_id',
+//                array('lastname' => 'value'))
+//            ->where('cev1.attribute_id=' . $firstName->getAttributeId())
+//            ->where('cev2.attribute_id=' . $lastName->getAttributeId());
         $this->setCollection($collection);
         return parent::_prepareCollection();
     }

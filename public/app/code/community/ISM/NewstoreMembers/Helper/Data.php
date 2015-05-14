@@ -1,5 +1,6 @@
 <?php
 
+
 class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public function getUsers()
@@ -26,7 +27,7 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group');
     }
 
-    public function setUserGroup($idCustomer)
+    public function setUserGroup($idCustomer ,$idGroup)
     {
         $customer = Mage::getModel('customer/customer')
             ->load($idCustomer, 'entity_id');
@@ -34,7 +35,7 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
         if ($prevGroupId !== $this->getNewstoreMembersGroupId()) {
             $customer->setPrevGroupId($prevGroupId);
         }
-        $customer->setGroupId($this->getNewstoreMembersGroupId())->save();
+        $customer->setGroupId($idGroup)->save();
     }
 
     private function checkNewstoreMembersGroupUser($idGroup)
@@ -52,19 +53,21 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
         $collection = Mage::getModel('newstoremembers/numbers')->getCollection();
         $newstoreRow = $collection->getItemByColumnValue('unique_key', $number);
 
-        /**@var $customer Mage_Customer_Model_Customer */
-        $customer = Mage::getModel('customer/session')->getCustomer();
-        if(count($newstoreRow)!=0) {
+        if (count($newstoreRow) != 0) {
 
+            /**@var $customer Mage_Customer_Model_Customer */
+            $customer = Mage::getModel('customer/session')->getCustomer();
             $customerId = $customer->getEntityId();
-            if ($this->checkNewstoreMembersGroupUser($customer->getGroupId()) && !$newstoreRow['customer_id']) {
-                $this->setUserGroup($customerId);
+            if ($this->checkNewstoreMembersGroupUser($customer->getGroupId()) && !$newstoreRow['customer_id']
+                && $newstoreRow['expire_date'] >= now(true)
+            ) {
+                $this->setUserGroup($customerId,$this->getNewstoreMembersGroupId());
                 $newstoreRow['customer_id'] = $customerId;
                 Mage::getModel('newstoremembers/numbers')->setData($newstoreRow->toArray())->save();
-            }else{
-                Mage::getSingleton('core/session')->addError('Your member number is not empty!');
+            } else {
+                Mage::getSingleton('core/session')->addError('Your member number is not empty or ...!');
             }
-        }else{
+        } else {
             Mage::getSingleton('core/session')->addError('Your member number is invalid!');
         }
 

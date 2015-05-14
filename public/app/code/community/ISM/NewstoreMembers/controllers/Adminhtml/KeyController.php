@@ -36,10 +36,14 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
+                $helper =  Mage::helper('newstoremembers');
                 Mage::getModel('newstoremembers/numbers')->setData($data)->save();
                 if($data['customer_id']){
-                    Mage::helper('newstoremembers')
-                        ->setUserGroup($data['customer_id']);
+//                    if($data['expire_date']<now(true)){
+//
+//                    }
+                    $helper
+                        ->setUserGroup($data['customer_id'],$helper->getNewstoreMembersGroupId());
                 }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
@@ -54,7 +58,6 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
             return;
         }
         Mage::getSingleton('adminhtml/session')->addError($this->__('Unable to find item to save'));
-        $this->_redirect('*/*/');
     }
 
     public function deleteAction()
@@ -68,6 +71,5 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
                 $this->_redirect('*/*/edit', array('id' => $id));
             }
         }
-        $this->_redirect('*/*/');
     }
 }

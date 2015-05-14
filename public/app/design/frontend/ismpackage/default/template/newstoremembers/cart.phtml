@@ -3,8 +3,6 @@
 
 <?php if (!$this->checkUserNewstoreMember()): ?>
 
-    <div id="messages"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
-    <?php echo $this->getChildHtml('global_messages') ?>
     <form action="<?php echo $this->getUrl('newstoremembers/number/cart') ?>" method="post" id="form-validate"
           autocomplete="off">
         <div class="fieldset">
