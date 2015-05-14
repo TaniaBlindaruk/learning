@@ -11,16 +11,12 @@ class ISM_NewstoreMembers_NumberController extends Mage_Core_Controller_Front_Ac
 
     public function indexAction()
     {
-        $this->loadLayout();
-        $this->renderLayout();
-    }
-
-    public function savePostAction()
-    {
         $data = $this->getRequest()->getPost();
         /**@var $helper ISM_NewstoreMembers_Helper_Data*/
         $helper = Mage::helper('newstoremembers');
         $helper->setMemberAndGroup($data['number']);
-        $this->_forward('index');
+        $this->loadLayout();
+        $this->renderLayout();
     }
+
 }
