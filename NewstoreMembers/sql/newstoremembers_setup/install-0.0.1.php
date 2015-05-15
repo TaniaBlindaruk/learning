@@ -53,6 +53,15 @@ $installer->getConnection()
             'comment' => 'Newstoremembers Number'
         )
     );
+
+//$installer->getConnection()
+//    ->addColumn(
+//        $installer->getTable('customer/entity'), "prev_group_id", array(
+//            'nullable' => true,
+//            'type' => Varien_Db_Ddl_Table::TYPE_INTEGER,
+//            'comment' => 'Previous Group Id'
+//        )
+//    );
 $eav = new Mage_Eav_Model_Entity_Setup('core_setup');
 
 $eav->addAttribute('customer', 'prev_group_id', array(

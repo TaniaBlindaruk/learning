@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <newstoremembers module="newstoremembers">
+            <title>Newstore Members</title>
+            <sort_order>77</sort_order>
+            <children>
+                <newstoremember module="newstoremembers">
+                    <title>Newstore Members</title>
+                    <action>adminhtml/members</action>
+                </newstoremember>
+                <newstorekey module="newstoremembers">
+                    <title>Newstore Key</title>
+                    <action>adminhtml/key</action>
+                </newstorekey>
+            </children>
+        </newstoremembers>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <newstoremembers translate="title" module="newstoremembers">
+                        <title>Newstore Members</title>
+                        <sort_order>0</sort_order>
+                        <children>
+                            <newstoremember module="newstoremembers">
+                                <title>Newstore Members</title>
+                            </newstoremember>
+                            <newstorekey module="newstoremembers">
+                                <title>Newstore Key</title>
+                            </newstorekey>
+                        </children>
+                    </newstoremembers>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+    <!--<acl>-->
+        <!--<resources>-->
+            <!--<admin>-->
+                <!--<children>-->
+                    <!--<system>-->
+                        <!--<children>-->
+                            <!--<config>-->
+                                <!--<children>-->
+                                    <!--<newstoremembers translate="title" module="newstoremembers">-->
+                                        <!--<title>SMS Gateway Section</title>-->
+                                    <!--</newstoremembers>-->
+                                <!--</children>-->
+                            <!--</config>-->
+                        <!--</children>-->
+                    <!--</system>-->
+                <!--</children>-->
+            <!--</admin>-->
+        <!--</resources>-->
+    <!--</acl>-->
+</config>

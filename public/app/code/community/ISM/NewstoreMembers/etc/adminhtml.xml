@@ -5,14 +5,10 @@
             <title>Newstore Members</title>
             <sort_order>77</sort_order>
             <children>
-                <newstoremember module="newstoremembers">
-                    <title>Newstore Members</title>
-                    <action>adminhtml/members</action>
-                </newstoremember>
-                <newstorekey module="newstoremembers">
-                    <title>Newstore Key</title>
-                    <action>adminhtml/key</action>
-                </newstorekey>
+                <newstorenumber module="newstoremembers">
+                    <title>Manage NewstoreNumber</title>
+                    <action>adminhtml/number</action>
+                </newstorenumber>
             </children>
         </newstoremembers>
     </menu>
@@ -24,36 +20,13 @@
                         <title>Newstore Members</title>
                         <sort_order>0</sort_order>
                         <children>
-                            <newstoremember module="newstoremembers">
-                                <title>Newstore Members</title>
-                            </newstoremember>
-                            <newstorekey module="newstoremembers">
-                                <title>Newstore Key</title>
-                            </newstorekey>
+                            <newstorenumber module="newstoremembers">
+                                <title>Manage NewstoreNumber</title>
+                            </newstorenumber>
                         </children>
                     </newstoremembers>
                 </children>
             </admin>
         </resources>
     </acl>
-
-    <!--<acl>-->
-        <!--<resources>-->
-            <!--<admin>-->
-                <!--<children>-->
-                    <!--<system>-->
-                        <!--<children>-->
-                            <!--<config>-->
-                                <!--<children>-->
-                                    <!--<newstoremembers translate="title" module="newstoremembers">-->
-                                        <!--<title>SMS Gateway Section</title>-->
-                                    <!--</newstoremembers>-->
-                                <!--</children>-->
-                            <!--</config>-->
-                        <!--</children>-->
-                    <!--</system>-->
-                <!--</children>-->
-            <!--</admin>-->
-        <!--</resources>-->
-    <!--</acl>-->
 </config>

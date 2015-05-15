@@ -5,7 +5,7 @@
  * Date: 04.05.15
  * Time: 15:20
  */
-class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Controller_Action
+class ISM_NewstoreMembers_Adminhtml_NumberController extends Mage_Adminhtml_Controller_Action
 {
 
     public function indexAction()
@@ -13,7 +13,7 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
         $this->loadLayout();
         $this->_setActiveMenu('newstoremembers');
 
-        $contentBlock = $this->getLayout()->createBlock('newstoremembers/adminhtml_key');
+        $contentBlock = $this->getLayout()->createBlock('newstoremembers/adminhtml_number');
         $this->_addContent($contentBlock);
         $this->renderLayout();
     }
@@ -26,9 +26,9 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     public function editAction()
     {
         $id = (int) $this->getRequest()->getParam('id');
-        Mage::getSingleton('newstoremembers/numbers')->load($id);
+        Mage::getSingleton('newstoremembers/number')->load($id);
         $this->loadLayout()->_setActiveMenu('newstoremembers');
-        $this->_addContent($this->getLayout()->createBlock('newstoremembers/adminhtml_key_edit'));
+        $this->_addContent($this->getLayout()->createBlock('newstoremembers/adminhtml_number_edit'));
         $this->renderLayout();
     }
 
@@ -36,16 +36,8 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-                $helper =  Mage::helper('newstoremembers');
-                Mage::getModel('newstoremembers/numbers')->setData($data)->save();
-                if($data['customer_id']){
-//                    if($data['expire_date']<now(true)){
-//
-//                    }
-                    $helper
-                        ->setUserGroup($data['customer_id'],$helper->getNewstoreMembersGroupId());
-                }
-                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was saved successfully'));
+                Mage::getModel('newstoremembers/number')->setData($data)->save();
+                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 $this->_redirect('*/*/');
             } catch (Exception $e) {
@@ -64,8 +56,8 @@ class ISM_NewstoreMembers_Adminhtml_KeyController extends Mage_Adminhtml_Control
     {
         if ($id = $this->getRequest()->getParam('id')) {
             try {
-                Mage::getModel('newstoremembers/numbers')->setId($id)->delete();
-                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('News was deleted successfully'));
+                Mage::getModel('newstoremembers/number')->setId($id)->delete();
+                Mage::getSingleton('adminhtml/session')->addSuccess($this->__('deleted successfully'));
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 $this->_redirect('*/*/edit', array('id' => $id));
