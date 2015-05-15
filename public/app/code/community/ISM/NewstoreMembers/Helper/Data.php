@@ -21,7 +21,6 @@ class ISM_NewstoreMembers_Helper_Data extends Mage_Core_Helper_Abstract
         }
         return $result;
     }
-
     public function getNewstoreMembersGroupId()
     {
         return Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group');

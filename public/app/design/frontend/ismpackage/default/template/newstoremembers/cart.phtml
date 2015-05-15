@@ -1,7 +1,7 @@
 <?php
 ?>
 
-<?php if (!$this->checkUserNewstoreMember()): ?>
+<?php if ($this->checkLoginUser() && !$this->checkUserNewstoreMember() ): ?>
 
     <form action="<?php echo $this->getUrl('newstoremembers/number/cart') ?>" method="post" id="form-validate"
           autocomplete="off">
