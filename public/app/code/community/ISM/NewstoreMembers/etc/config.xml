@@ -42,6 +42,9 @@
                 </connection>
             </newstoremembers_setup>
         </resources>
+        <controller_action_predispatch>
+
+        </controller_action_predispatch>
     </global>
     <admin>
         <routers>
@@ -54,4 +57,26 @@
             </adminhtml>
         </routers>
     </admin>
+    <adminhtml>
+        <events>
+            <controller_action_predispatch_customer_group_delete>
+                <observers>
+                    <newstoremembers_controller_action_predispatch_customer_group_delete>
+                        <type>model</type>
+                        <class>newstoremembers/observer</class>
+                        <method>controllerActionPredispatchCustomerGroupDelete</method>
+                    </newstoremembers_controller_action_predispatch_customer_group_delete>
+                </observers>
+            </controller_action_predispatch_customer_group_delete>
+        </events>
+    </adminhtml>
+    <customer>
+        <create_account>
+            <default_group>
+                <stores>
+                    4
+                </stores>
+            </default_group>
+        </create_account>
+    </customer>
 </config>
