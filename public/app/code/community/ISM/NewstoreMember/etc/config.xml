@@ -59,4 +59,17 @@
             </adminhtml>
         </routers>
     </admin>
+    <adminhtml>
+        <events>
+            <controller_action_predispatch_adminhtml_catalog_product_save>
+                <observers>
+                    <newstoremembers_controller_action_predispatch_adminhtml_catalog_product_save>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>controllerActionPredispatchAdminhtmlCatalogProductSave</method>
+                    </newstoremembers_controller_action_predispatch_adminhtml_catalog_product_save>
+                </observers>
+            </controller_action_predispatch_adminhtml_catalog_product_save>
+        </events>
+    </adminhtml>
 </config>
