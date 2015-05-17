@@ -47,10 +47,11 @@ class ISM_NewstoreMember_Model_Observer
         $newstoremembersGroupId = $helper->getNewstoreMembersGroupId();
         if($origGroupId!==$groupId) {
             $customerId = $dataCustomer['entity_id'];
+            $model = Mage::getModel('newstoremember/newstoremember');
             if ($origGroupId ===$newstoremembersGroupId ){
-                $helper->unsetNewstoremembersCustomer($customerId);
+                $model->unsetNewstoremembersCustomer($customerId);
             }else if ($origGroupId !== $helper->getNewstoreMembersGroupId() &&$groupId===$newstoremembersGroupId) {
-                $helper->addCustomerToNewstoremembers($customerId);
+                $model->addCustomerToNewstoremembers($customerId);
             }
         }
     }

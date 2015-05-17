@@ -34,7 +34,6 @@
                     </newstoremember>
                 </entities>
             </newstoremember_resource>
-
             <customer_resource>
                 <rewrite>
                     <customer_collection>ISM_NewstoreMember_Model_Resource_Customer_Collection</customer_collection>

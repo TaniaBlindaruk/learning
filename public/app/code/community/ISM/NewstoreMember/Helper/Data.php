@@ -1,7 +1,7 @@
 <?php
 
 
-class ISM_NewstoreMember_Helper_Data extends ISM_NewstoreMember_Helper_Customer
+class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public function getUserListIsNotNewstoreMembers($currentId)
     {
