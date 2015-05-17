@@ -5,6 +5,7 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
 
     protected function _prepareForm()
     {
+        /**@var $helper ISM_NewstoreMember_Helper_Data*/
         $helper = Mage::helper('newstoremember');
         $model = Mage::getSingleton('newstoremember/newstoremember');
         if(!$model->getUniqueKey()) {
@@ -41,16 +42,11 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
         $fieldset->addField('customer_id', 'select', array(
             'label' => $helper->__('User'),
             'name' => 'customer_id',
-            'values' =>$helper->getUsers()
+            'values' =>$helper->getUserListIsNotNewstoreMembers($model['customer_id'])
         ));
 
         $form->setUseContainer(true);
-
-        if($data = Mage::getSingleton('adminhtml/session')->getFormData()){
-            $form->setValues($data);
-        } else {
-            $form->setValues($model->getData());
-        }
+        $form->setValues($model->getData());
 
         return parent::_prepareForm();
     }

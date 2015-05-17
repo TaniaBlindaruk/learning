@@ -1,2 +1,3 @@
 1) Створюється група, яку не можна видалити... і Яка записується в system.xml
 2) Ціну для NewstorememberGroup потрібно воодити в окремом полі
+3) Rewrite Customer Collection
