@@ -5,10 +5,10 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
 
     protected function _prepareForm()
     {
-        /**@var $helper ISM_NewstoreMember_Helper_Data*/
+        /**@var $helper ISM_NewstoreMember_Helper_Data */
         $helper = Mage::helper('newstoremember');
         $model = Mage::getSingleton('newstoremember/newstoremember');
-        if(!$model->getUniqueKey()) {
+        if (!$model->getUniqueKey()) {
             $model->setUniqueKey(Mage::helper('core')->getRandomString(10));
         }
         $form = new Varien_Data_Form(array(
@@ -39,14 +39,25 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
             'name' => 'expire_date',
             'required' => true
         ));
+
+        $data = Mage::getSingleton('adminhtml/session')->getFormData();
+        if ($data) {
+            $customerId = $data['customer_id'];
+        } else {
+            $customerId = $model['customer_id'];
+        }
         $fieldset->addField('customer_id', 'select', array(
             'label' => $helper->__('User'),
             'name' => 'customer_id',
-            'values' =>$helper->getUserListIsNotNewstoreMembers($model['customer_id'])
+            'values' => $helper->getUserListIsNotNewstoreMembers($customerId)
         ));
-
         $form->setUseContainer(true);
-        $form->setValues($model->getData());
+
+        if ($data) {
+            $form->setValues($data);
+        } else {
+            $form->setValues($model->getData());
+        }
 
         return parent::_prepareForm();
     }

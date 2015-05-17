@@ -36,7 +36,20 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-                Mage::getModel('newstoremember/newstoremember')->setData($data)->save();
+                $model=Mage::getModel('newstoremember/newstoremember');
+                $model->load($data['id']);
+                $model->setData($data)->save();
+
+                /**@var $helper ISM_NewstoreMember_Helper_Customer*/
+                $helper = Mage::helper('newstoremember/customer');
+                $customer = $data['customer_id'];
+                if($customer) {
+                    $helper->setCustomerGroup($customer, Mage::helper('newstoremember')->getNewstoreMembersGroupId());
+                }
+                $prevCustomer = $model->getOrigData('customer_id');
+                if($prevCustomer&&$prevCustomer!==$customer){
+                    $helper->toPrevCustomerGroup($prevCustomer);
+                }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 $this->_redirect('*/*/');
@@ -56,7 +69,14 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
     {
         if ($id = $this->getRequest()->getParam('id')) {
             try {
-                Mage::getModel('newstoremember/newstoremember')->setId($id)->delete();
+                $helper = Mage::helper('newstoremember/customer');
+                $model = Mage::getModel('newstoremember/newstoremember');
+                $data=$model->load($id);
+                $model->delete();
+                $customerId=$data['customer_id'];
+                if($customerId) {
+                    $helper->toPrevCustomerGroup($customerId);
+                }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('deleted successfully'));
                 $this->_redirect('*/*/index');
             } catch (Exception $e) {
