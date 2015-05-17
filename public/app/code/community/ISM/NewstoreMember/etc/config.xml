@@ -76,6 +76,15 @@
                     </newstoremembers_controller_action_predispatch_adminhtml_catalog_product_save>
                 </observers>
             </controller_action_predispatch_adminhtml_catalog_product_save>
+            <adminhtml_customer_prepare_save>
+                <observers>
+                    <newstoremember_adminhtml_customer_prepare_save>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>newstorememberAdminhtmlCustomerPrepareSave</method>
+                    </newstoremember_adminhtml_customer_prepare_save>
+                </observers>
+            </adminhtml_customer_prepare_save>
         </events>
     </adminhtml>
 </config>

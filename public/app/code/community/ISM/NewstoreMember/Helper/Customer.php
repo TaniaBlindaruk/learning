@@ -1,7 +1,7 @@
 <?php
 
 
-class ISM_NewstoreMember_Helper_Customer extends Mage_Core_Helper_Abstract
+class ISM_NewstoreMember_Helper_Customer extends ISM_NewstoreMember_Helper_Newstoremember
 {
     public function setCustomerGroup($idCustomer ,$idGroup)
     {
@@ -18,7 +18,6 @@ class ISM_NewstoreMember_Helper_Customer extends Mage_Core_Helper_Abstract
         /**@var $customer ISM_NewstoreMember_Model_Resource_Newstoremember_Collection*/
         $collection = Mage::getModel('customer/customer')->getCollection()->addAttributeToSelect('prev_group_id');
         $customer=$collection->getItemByColumnValue('entity_id',$idCustomer);
-//            ->load($idCustomer, 'entity_id');
         $customer->setGroupId($customer->getPrevGroupId())
             ->save();
     }

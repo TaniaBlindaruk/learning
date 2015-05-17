@@ -35,4 +35,23 @@ class ISM_NewstoreMember_Model_Observer
         }
         $request->setPost('product', $data);
     }
+
+    public function newstorememberAdminhtmlCustomerPrepareSave(Varien_Event_Observer $observer){
+        /**@var $helper ISM_NewstoreMember_Helper_Data*/
+        $customer = $observer->getCustomer();
+        $helper = Mage::helper('newstoremember');
+        $origDataCustomer = $customer->getOrigData();
+        $dataCustomer=$customer->getData();
+        $origGroupId =$origDataCustomer['group_id'];
+        $groupId = $dataCustomer['group_id'];
+        $newstoremembersGroupId = $helper->getNewstoreMembersGroupId();
+        if($origGroupId!==$groupId) {
+            $customerId = $dataCustomer['entity_id'];
+            if ($origGroupId ===$newstoremembersGroupId ){
+                $helper->unsetNewstoremembersCustomer($customerId);
+            }else if ($origGroupId !== $helper->getNewstoreMembersGroupId() &&$groupId===$newstoremembersGroupId) {
+                $helper->addCustomerToNewstoremembers($customerId);
+            }
+        }
+    }
 }
