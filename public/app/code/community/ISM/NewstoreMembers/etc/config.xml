@@ -15,6 +15,11 @@
             <newstoremembers>
                 <class>ISM_NewstoreMembers_Block</class>
             </newstoremembers>
+            <adminhtml>
+                <rewrite>
+                    <customer_group_edit>ISM_NewstoreMembers_Block_Adminhtml_Customer_Group_Edit</customer_group_edit>
+                </rewrite>
+            </adminhtml>
         </blocks>
         <models>
             <newstoremembers>
@@ -42,9 +47,6 @@
                 </connection>
             </newstoremembers_setup>
         </resources>
-        <controller_action_predispatch>
-
-        </controller_action_predispatch>
     </global>
     <admin>
         <routers>
@@ -57,26 +59,4 @@
             </adminhtml>
         </routers>
     </admin>
-    <adminhtml>
-        <events>
-            <controller_action_predispatch_customer_group_delete>
-                <observers>
-                    <newstoremembers_controller_action_predispatch_customer_group_delete>
-                        <type>model</type>
-                        <class>newstoremembers/observer</class>
-                        <method>controllerActionPredispatchCustomerGroupDelete</method>
-                    </newstoremembers_controller_action_predispatch_customer_group_delete>
-                </observers>
-            </controller_action_predispatch_customer_group_delete>
-        </events>
-    </adminhtml>
-    <customer>
-        <create_account>
-            <default_group>
-                <stores>
-                    4
-                </stores>
-            </default_group>
-        </create_account>
-    </customer>
 </config>

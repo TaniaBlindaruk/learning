@@ -4,6 +4,10 @@
         <ISM_NewstoreMembers>
             <active>true</active>
             <codePool>community</codePool>
+            <depends>
+                <Mage_Customer />
+                <Mage_Adminhtml />
+            </depends>
         </ISM_NewstoreMembers>
     </modules>
 </config>
