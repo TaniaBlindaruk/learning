@@ -2,3 +2,5 @@
 2) Ціну для NewstorememberGroup потрібно воодити в окремом полі
 3) Rewrite Customer Collection
 4) Адмін може вибрати тільки юзера, який не є newstoremember=_=
+5) При зміні групи юзера на newstoremembers group створюється новий уікальий ключ...
+   При виборі юзера в newstoremembers, його група автоматично зміюється на nestoremembers
