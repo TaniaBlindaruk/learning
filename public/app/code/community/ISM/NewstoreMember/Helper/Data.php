@@ -7,23 +7,23 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
     {
         /** @var Mage_Customer_Model_Resource_Customer_Collection $customers */
         $customers = Mage::getModel('customer/customer')->getCollection()->addNameToSelect();
-//        $customers->toOptionArray();
-        $result[] = array(
+        return array_merge(array(array(
             'value' => null,
             'label' => '-------------------'
-        );
-        foreach ($customers as $customer) {
-            $push = array(
-                'value' => $customer->getId(),
-                'label' => $customer->getName()
-            );
-            $result[] = $push;
-        }
-        return $result;
+        )), $customers->toOptionArray());
     }
 
     public function getNewstoreMembersGroupId()
     {
         return Mage::getStoreConfig('newstoremember/newstoremember_group/newstoremember_field_group');
+    }
+
+    public function isUnique($model, $field, $value) {
+        //Check value for uniqueness
+        $model->load($value, $field);
+        if (empty($model->getData())) {
+            return true;
+        }
+        return false;
     }
 }

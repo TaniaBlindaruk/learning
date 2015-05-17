@@ -58,6 +58,7 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
             try {
                 Mage::getModel('newstoremember/newstoremember')->setId($id)->delete();
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('deleted successfully'));
+                $this->_redirect('*/*/index');
             } catch (Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
                 $this->_redirect('*/*/edit', array('id' => $id));
