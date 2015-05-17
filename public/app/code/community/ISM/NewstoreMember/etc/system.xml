@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<config>
+    <sections>
+        <newstoremember module="newstoremember" translate="label">
+            <label>NewstoreMembers</label>
+            <sort_order>200</sort_order>
+            <show_in_default>0</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <tab>sales</tab>
+            <groups>
+                <newstoremember_group translate="label">
+                    <label>NewstoreMembers Group</label>
+                    <!--<comment>Some comment about my group</comment>-->
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <newstoremember_field_group translate="label tooltip comment">
+                            <label>Group</label>
+                            <!--<comment>Some comment about my field</comment>-->
+                            <!--<tooltip>Field ToolTip</tooltip>-->
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_customer_group</source_model>
+                            <frontend_type>select</frontend_type>
+                        </newstoremember_field_group>
+                    </fields>
+                </newstoremember_group>
+            </groups>
+        </newstoremember>
+    </sections>
+</config>
+<!--Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group');-->
