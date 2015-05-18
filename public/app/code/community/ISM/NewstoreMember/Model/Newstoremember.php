@@ -32,7 +32,7 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
         $this->setData(
             array(
                 'customer_id' => $customerId,
-                'unique_key' => Mage::helper('core')->getRandomString(10),
+                'unique_key' => Mage::helper('newstoremember')->getNewQniqueNumber(),
                 'expire_date' => now()
             )
         )->save();

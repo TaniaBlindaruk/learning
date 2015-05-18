@@ -86,4 +86,33 @@
             </adminhtml_customer_prepare_save>
         </events>
     </adminhtml>
+    <frontend>
+        <!--<events>-->
+            <!--<checkout_type_onepage_save_order_after>-->
+                <!--<observers>-->
+                    <!--<newstoremembers_checkout_type_onepage_save_order_after>-->
+                        <!--<type>model</type>-->
+                        <!--<class>newstoremembers/observer</class>-->
+                        <!--<method>checkoutTypeOnepageSaveOrderAfter</method>-->
+                    <!--</newstoremembers_checkout_type_onepage_save_order_after>-->
+                <!--</observers>-->
+            <!--</checkout_type_onepage_save_order_after>-->
+        <!--</events>-->
+        <layout>
+            <updates>
+                <newstoremember>
+                    <file>newstoremember.xml</file>
+                </newstoremember>
+            </updates>
+        </layout>
+        <routers>
+            <newstoremember>
+                <use>standard</use>
+                <args>
+                    <module>ISM_NewstoreMember</module>
+                    <frontName>newstoremember</frontName>
+                </args>
+            </newstoremember>
+        </routers>
+    </frontend>
 </config>

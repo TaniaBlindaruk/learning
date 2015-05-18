@@ -33,13 +33,22 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig('newstoremember/newstoremember_group/newstoremember_field_group');
     }
 
-    public function isUnique($model, $field, $value)
-    {
-        //Check value for uniqueness
-        $model->load($value, $field);
-        if (empty($model->getData())) {
-            return true;
+    public function addCustomerToNewstoreMemberFrontend($number){
+        /**@var $model ISM_NewstoreMember_Model_Resource_Newstoremember_Collection*/
+        $model=Mage::getModel('newstoremember/newstoremember')->getCollection();
+        $modelData=$model->getItemByColumnValue('unique_key',$number);
+        if(empty($modelData)){
+            Mage::getSingleton('core/session')->addError('Your member number is invalid!');
+        }else if(!$modelData['customer_id']){
+            /**@var $customerModel ISM_NewstoreMember_Model_Customer*/
+            $customerModel = Mage::getModel('newstoremember/customer');
+            $customerId=Mage::getSingleton('customer/session')->getCustomer()->getEntityId();
+            $customerModel->setCustomerGroup($customerId,$this->getNewstoreMembersGroupId());
+            $modelData->setCustomerId($customerId)->save();
         }
-        return false;
+    }
+
+    public function getNewQniqueNumber(){
+        return Mage::helper('core')->getRandomString(10);
     }
 }

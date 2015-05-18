@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="newstoremember">
+                <name>newstoremember</name>
+                <path>newstoremember/newstoremember/index</path>
+                <label>Newstore Members</label>
+            </action>
+        </reference>
+    </customer_account>
+    <newstoremember_newstoremember_index translate="label">
+        <update handle="customer_account"/>
+        <reference name="content">
+            <block type="newstoremember/newstoremember" name="newstoremember_number_push" template="newstoremember/newstoremember.phtml"/>
+        </reference>
+    </newstoremember_newstoremember_index>
+
+</layout>

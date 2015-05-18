@@ -9,7 +9,7 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
         $helper = Mage::helper('newstoremember');
         $model = Mage::getSingleton('newstoremember/newstoremember');
         if (!$model->getUniqueKey()) {
-            $model->setUniqueKey(Mage::helper('core')->getRandomString(10));
+            $model->setUniqueKey($helper->getNewQniqueNumber());
         }
         $form = new Varien_Data_Form(array(
             'id' => 'edit_form',
