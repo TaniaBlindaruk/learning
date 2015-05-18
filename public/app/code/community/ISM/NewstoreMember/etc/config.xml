@@ -58,8 +58,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <ISM_NewstoreMember_Adminhtml before="Mage_Adminhtml">ISM_NewstoreMember_Adminhtml
-                        </ISM_NewstoreMember_Adminhtml>
+                        <ISM_NewstoreMember_Adminhtml before="Mage_Adminhtml">ISM_NewstoreMember_Adminhtml</ISM_NewstoreMember_Adminhtml>
                     </modules>
                 </args>
             </adminhtml>
