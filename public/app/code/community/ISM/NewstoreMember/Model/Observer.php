@@ -70,6 +70,6 @@ class ISM_NewstoreMember_Model_Observer
     }
 
     public function crontabNewstorememberExpireDate(){
-        Mage::log("asd");
+
     }
 }
