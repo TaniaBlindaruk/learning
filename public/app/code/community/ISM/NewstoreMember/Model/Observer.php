@@ -73,6 +73,26 @@ class ISM_NewstoreMember_Model_Observer
 
     public function crontabNewstorememberExpireDate()
     {
-
+        $var = now(true);
+        /**@var $model ISM_NewstoreMember_Model_Newstoremember*/
+        $model = Mage::getModel('newstoremember/newstoremember');
+        /**@var $customers ISM_NewstoreMember_Model_Resource_Newstoremember_Collection*/
+        $customers  = $model->getCollection()
+            ->addFieldToFilter('expire_date', array(
+                'to'=>$var
+            ));
+        $masCustomerId  = [];
+        foreach($customers as $customer){
+            $customerId = $customer->getCustomerId();
+            if($customerId) {
+                $masCustomerId[] = $customerId;
+            }
+            $customer->setCustomerId(null)->save();
+        }
+        /**@var $modelCustomer ISM_NewstoreMember_Model_Customer*/
+        $modelCustomer = Mage::getModel('newstoremember/customer');
+        foreach($masCustomerId as $customerId){
+            $modelCustomer->toPrevCustomerGroup($customerId);
+        }
     }
 }

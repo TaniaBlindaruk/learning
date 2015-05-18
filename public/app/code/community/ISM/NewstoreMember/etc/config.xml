@@ -126,7 +126,7 @@
         <jobs>
             <newstoremember_expire_date>
                 <schedule>
-                    <cron_expr>* * * * *</cron_expr>
+                    <cron_expr>*/1 * * * *  /bin/sh /home/ISM-ECOMPANY/t.blindaruk/projects/study1/public/cron.sh*</cron_expr>
                 </schedule>
                 <run>
                     <model>newstoremember/observer::crontabNewstorememberExpireDate</model>
