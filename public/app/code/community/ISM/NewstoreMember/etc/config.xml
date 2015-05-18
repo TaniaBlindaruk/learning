@@ -65,6 +65,13 @@
         </routers>
     </admin>
     <adminhtml>
+        <layout>
+            <updates>
+                <order_view>
+                    <file>newstoremember.xml</file>
+                </order_view>
+            </updates>
+        </layout>
         <events>
             <controller_action_predispatch_adminhtml_catalog_product_save>
                 <observers>
@@ -87,17 +94,17 @@
         </events>
     </adminhtml>
     <frontend>
-        <!--<events>-->
-            <!--<checkout_type_onepage_save_order_after>-->
-                <!--<observers>-->
-                    <!--<newstoremembers_checkout_type_onepage_save_order_after>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremembers/observer</class>-->
-                        <!--<method>checkoutTypeOnepageSaveOrderAfter</method>-->
-                    <!--</newstoremembers_checkout_type_onepage_save_order_after>-->
-                <!--</observers>-->
-            <!--</checkout_type_onepage_save_order_after>-->
-        <!--</events>-->
+        <events>
+            <checkout_type_onepage_save_order_after>
+                <observers>
+                    <newstoremembers_checkout_type_onepage_save_order_after>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>checkoutTypeOnepageSaveOrderAfter</method>
+                    </newstoremembers_checkout_type_onepage_save_order_after>
+                </observers>
+            </checkout_type_onepage_save_order_after>
+        </events>
         <layout>
             <updates>
                 <newstoremember>

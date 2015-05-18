@@ -3,7 +3,7 @@
     <adminhtml_sales_order_view>
         <reference name="order_info">
             <action method="setTemplate">
-                <template>newstoremembers/orderinfo.phtml</template>
+                <template>newstoremember/orderinfo.phtml</template>
             </action>
         </reference>
     </adminhtml_sales_order_view>

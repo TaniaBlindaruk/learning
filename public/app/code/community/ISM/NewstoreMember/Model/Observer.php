@@ -55,4 +55,17 @@ class ISM_NewstoreMember_Model_Observer
             }
         }
     }
+
+    public function checkoutTypeOnepageSaveOrderAfter(Varien_Event_Observer $observer) {
+        $order = $observer->getOrder();
+        $customer = $order->getCustomer();
+        $collection=Mage::getModel('newstoremember/newstoremember')->getCollection()
+            ->getItemByColumnValue('customer_id',$customer->getEntityId());
+        $helper = Mage::helper('newstoremember');
+        if($customer->getGroupId()===$helper->getNewstoreMembersGroupId()&&$collection->hasUniqueKey()){
+            $key = $collection->getUniqueKey();
+            $order->setNewstoremembersNumber($key)->save();
+            $observer->getQuote()->setNewstoremembersNumber($key)->save();
+        }
+    }
 }
