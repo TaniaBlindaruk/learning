@@ -15,5 +15,4 @@
             <block type="newstoremember/newstoremember" name="newstoremember_number_push" template="newstoremember/newstoremember.phtml"/>
         </reference>
     </newstoremember_newstoremember_index>
-
 </layout>
