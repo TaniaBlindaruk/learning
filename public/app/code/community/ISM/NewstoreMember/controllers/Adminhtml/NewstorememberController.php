@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: tania
@@ -25,7 +26,7 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
 
     public function editAction()
     {
-        $id = (int) $this->getRequest()->getParam('id');
+        $id = (int)$this->getRequest()->getParam('id');
         Mage::getSingleton('newstoremember/newstoremember')->load($id);
         $this->loadLayout()->_setActiveMenu('newstoremember');
         $this->_addContent($this->getLayout()->createBlock('newstoremember/adminhtml_newstoremember_edit'));
@@ -36,17 +37,17 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-                $model=Mage::getModel('newstoremember/newstoremember');
+                $model = Mage::getModel('newstoremember/newstoremember');
                 $model->load($data['id']);
                 $model->setData($data)->save();
-                /**@var $customerModel ISM_NewstoreMember_Model_Customer*/
+                /**@var $customerModel ISM_NewstoreMember_Model_Customer */
                 $customerModel = Mage::getModel('newstoremember/customer');
                 $customer = $data['customer_id'];
-                if($customer) {
+                if ($customer) {
                     $customerModel->setCustomerGroup($customer, Mage::helper('newstoremember')->getNewstoreMembersGroupId());
                 }
                 $prevCustomer = $model->getOrigData('customer_id');
-                if($prevCustomer&&$prevCustomer!==$customer){
+                if ($prevCustomer && $prevCustomer !== $customer) {
                     $customerModel->toPrevCustomerGroup($prevCustomer);
                 }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('saved successfully'));
@@ -70,10 +71,10 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
             try {
                 $modelCustomer = Mage::getModel('newstoremember/customer');
                 $model = Mage::getModel('newstoremember/newstoremember');
-                $data=$model->load($id);
+                $data = $model->load($id);
                 $model->delete();
-                $customerId=$data['customer_id'];
-                if($customerId) {
+                $customerId = $data['customer_id'];
+                if ($customerId) {
                     $modelCustomer->toPrevCustomerGroup($customerId);
                 }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('deleted successfully'));

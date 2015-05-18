@@ -26,6 +26,7 @@ class ISM_NewstoreMember_NewstorememberController extends Mage_Core_Controller_F
             $helper->addCustomerToNewstoreMemberFrontend($number);
         }
     }
+
     public function cartAction()
     {
         $this->_redirect('checkout/cart/index');

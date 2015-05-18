@@ -36,7 +36,7 @@ class  ISM_NewstoreMember_Block_Adminhtml_Customer_Group_Edit extends Mage_Admin
     public function __construct()
     {
         parent::__construct();
-        if(Mage::registry('current_group')->getId()==Mage::helper('newstoremember')->getNewstoreMembersGroupId()) {
+        if (Mage::registry('current_group')->getId() == Mage::helper('newstoremember')->getNewstoreMembersGroupId()) {
             $this->_removeButton('delete');
         }
     }

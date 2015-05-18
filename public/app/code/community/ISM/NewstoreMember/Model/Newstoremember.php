@@ -9,11 +9,12 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
         $this->_init('newstoremember/newstoremember');
     }
 
-    public function save(){
-        if($this->getCustomerId()===''){
+    public function save()
+    {
+        if ($this->getCustomerId() === '') {
             $this->setCustomerId(null);
         }
-        if($this->getId()===''){
+        if ($this->getId() === '') {
             $this->setId(null);
         }
         return parent::save();

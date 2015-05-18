@@ -36,40 +36,43 @@ class ISM_NewstoreMember_Model_Observer
         $request->setPost('product', $data);
     }
 
-    public function newstorememberAdminhtmlCustomerPrepareSave(Varien_Event_Observer $observer){
-        /**@var $helper ISM_NewstoreMember_Helper_Data*/
+    public function newstorememberAdminhtmlCustomerPrepareSave(Varien_Event_Observer $observer)
+    {
+        /**@var $helper ISM_NewstoreMember_Helper_Data */
         $customer = $observer->getCustomer();
         $helper = Mage::helper('newstoremember');
         $origDataCustomer = $customer->getOrigData();
-        $dataCustomer=$customer->getData();
-        $origGroupId =$origDataCustomer['group_id'];
+        $dataCustomer = $customer->getData();
+        $origGroupId = $origDataCustomer['group_id'];
         $groupId = $dataCustomer['group_id'];
         $newstoremembersGroupId = $helper->getNewstoreMembersGroupId();
-        if($origGroupId!==$groupId) {
+        if ($origGroupId !== $groupId) {
             $customerId = $dataCustomer['entity_id'];
             $model = Mage::getModel('newstoremember/newstoremember');
-            if ($origGroupId ===$newstoremembersGroupId ){
+            if ($origGroupId === $newstoremembersGroupId) {
                 $model->unsetNewstoremembersCustomer($customerId);
-            }else if ($origGroupId !== $helper->getNewstoreMembersGroupId() &&$groupId===$newstoremembersGroupId) {
+            } else if ($origGroupId !== $helper->getNewstoreMembersGroupId() && $groupId === $newstoremembersGroupId) {
                 $model->addCustomerToNewstoremembers($customerId);
             }
         }
     }
 
-    public function checkoutTypeOnepageSaveOrderAfter(Varien_Event_Observer $observer) {
+    public function checkoutTypeOnepageSaveOrderAfter(Varien_Event_Observer $observer)
+    {
         $order = $observer->getOrder();
         $customer = $order->getCustomer();
-        $collection=Mage::getModel('newstoremember/newstoremember')->getCollection()
-            ->getItemByColumnValue('customer_id',$customer->getEntityId());
+        $collection = Mage::getModel('newstoremember/newstoremember')->getCollection()
+            ->getItemByColumnValue('customer_id', $customer->getEntityId());
         $helper = Mage::helper('newstoremember');
-        if($customer->getGroupId()===$helper->getNewstoreMembersGroupId()&&$collection->hasUniqueKey()){
+        if ($customer->getGroupId() === $helper->getNewstoreMembersGroupId() && $collection->hasUniqueKey()) {
             $key = $collection->getUniqueKey();
             $order->setNewstoremembersNumber($key)->save();
             $observer->getQuote()->setNewstoremembersNumber($key)->save();
         }
     }
 
-    public function crontabNewstorememberExpireDate(){
+    public function crontabNewstorememberExpireDate()
+    {
 
     }
 }

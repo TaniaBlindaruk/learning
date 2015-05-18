@@ -9,7 +9,8 @@ class ISM_NewstoreMember_Model_Resource_Newstoremember_Collection extends Mage_C
         $this->_init('newstoremember/newstoremember');
     }
 
-    public function toCustomerOptionArray(){
+    public function toCustomerOptionArray()
+    {
         $firstName = Mage::getModel('eav/entity_attribute')
             ->loadByCode('1', 'firstname');
         $lastName = Mage::getModel('eav/entity_attribute')
@@ -27,8 +28,8 @@ class ISM_NewstoreMember_Model_Resource_Newstoremember_Collection extends Mage_C
                 'cev2.entity_id=main_table.customer_id',
                 array('lastname' => 'value'))
             ->where('cev1.attribute_id=' . $firstName->getAttributeId())
-            ->where('cev2.attribute_id=' .$lastName->getAttributeId());
-        return parent::_toOptionArray('customer_id','fullname');
+            ->where('cev2.attribute_id=' . $lastName->getAttributeId());
+        return parent::_toOptionArray('customer_id', 'fullname');
     }
 
 }

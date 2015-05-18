@@ -33,4 +33,4 @@
         </newstoremember>
     </sections>
 </config>
-<!--Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group');-->
+        <!--Mage::getStoreConfig('newstoremembers/newstoremembers_group/newstoremembers_field_group');-->

@@ -56,7 +56,7 @@ $installer->getConnection()
 $eav = new Mage_Eav_Model_Entity_Setup('core_setup');
 
 $eav->addAttribute('customer', 'prev_group_id', array(
-    'type'      => 'int'
+    'type' => 'int'
 ));
 
 $installer->endSetup();

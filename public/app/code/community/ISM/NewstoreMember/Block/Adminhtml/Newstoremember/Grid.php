@@ -3,8 +3,9 @@
 class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
 
-    protected function _prepareCollection() {
-        /**@var $collection ISM_NewstoreMember_Model_Resource_Newstoremember_Collection*/
+    protected function _prepareCollection()
+    {
+        /**@var $collection ISM_NewstoreMember_Model_Resource_Newstoremember_Collection */
         $collection = Mage::getModel('newstoremember/newstoremember')
             ->getCollection();
         $firstName = Mage::getModel('eav/entity_attribute')
@@ -12,7 +13,7 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
         $lastName = Mage::getModel('eav/entity_attribute')
             ->loadByCode('1', 'lastname');
         $firstnameAttributeId = $firstName->getAttributeId();
-        $latnameAttributeId =$lastName->getAttributeId();
+        $latnameAttributeId = $lastName->getAttributeId();
         $collection->getSelect()
             ->columns(new Zend_Db_Expr("CONCAT(`cev1`.`value`, ' ',"
                 . "`cev2`.`value`) AS fullname"))
