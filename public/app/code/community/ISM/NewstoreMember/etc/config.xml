@@ -122,4 +122,16 @@
             </newstoremember>
         </routers>
     </frontend>
+    <crontab>
+        <jobs>
+            <newstoremember_expire_date>
+                <schedule>
+                    <cron_expr>* * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>newstoremember/observer::crontabNewstorememberExpireDate</model>
+                </run>
+            </newstoremember_expire_date>
+        </jobs>
+    </crontab>
 </config>

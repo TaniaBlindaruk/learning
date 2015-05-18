@@ -68,4 +68,8 @@ class ISM_NewstoreMember_Model_Observer
             $observer->getQuote()->setNewstoremembersNumber($key)->save();
         }
     }
+
+    public function crontabNewstorememberExpireDate(){
+        Mage::log("asd");
+    }
 }
