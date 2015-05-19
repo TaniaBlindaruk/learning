@@ -41,7 +41,7 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
         if (empty($modelData)) {
             Mage::getSingleton('core/session')->addError('Your member number is invalid!');
             return false;
-        } else if (!$modelData['customer_id']) {
+        } else if (!$modelData['customer_id'] && $modelData['expire_date'] > now()) {
             /**@var $customerModel ISM_NewstoreMember_Model_Customer */
             $customerModel = Mage::getModel('newstoremember/customer');
             $customerId = Mage::getSingleton('customer/session')->getCustomer()->getEntityId();
@@ -49,7 +49,7 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
             $modelData->setCustomerId($customerId)->save();
             return true;
         }
-        Mage::getSingleton('core/session')->addError('This member number is\'t empty');
+        Mage::getSingleton('core/session')->addError('This member number is\'t empty or expire_date');
         return false;
     }
 
