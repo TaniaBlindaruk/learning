@@ -52,17 +52,6 @@
                 </connection>
             </newstoremember_setup>
         </resources>
-        <events>
-            <catalog_product_save_before>
-                <observers>
-                    <newstoremember_catalog_product_save_before>
-                        <type>model</type>
-                        <class>newstoremember/observer</class>
-                        <method>catalogProductSaveBefore</method>
-                    </newstoremember_catalog_product_save_before>
-                </observers>
-            </catalog_product_save_before>
-        </events>
     </global>
     <admin>
         <routers>
@@ -84,47 +73,55 @@
             </updates>
         </layout>
         <events>
-
-            <!--<adminhtml_customer_prepare_save>-->
-                <!--<observers>-->
-                    <!--<newstoremember_adminhtml_customer_prepare_save>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>customerSaveBefore</method>-->
-                    <!--</newstoremember_adminhtml_customer_prepare_save>-->
-                <!--</observers>-->
-            <!--</adminhtml_customer_prepare_save>-->
-            <!--<catalog_product_import_finish_before>-->
-                <!--<observers>-->
-                    <!--<newstoremember_catalog_product_import_finish_before>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>catalogProductImportFinishBefore</method>-->
-                    <!--</newstoremember_catalog_product_import_finish_before>-->
-                <!--</observers>-->
-            <!--</catalog_product_import_finish_before>-->
+            <catalog_product_save_before>
+                <observers>
+                    <newstoremember_catalog_product_save_before>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>catalogProductSaveBefore</method>
+                    </newstoremember_catalog_product_save_before>
+                </observers>
+            </catalog_product_save_before>
+            <adminhtml_customer_prepare_save>
+                <observers>
+                    <newstoremember_adminhtml_customer_prepare_save>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>customerSaveBefore</method>
+                    </newstoremember_adminhtml_customer_prepare_save>
+                </observers>
+            </adminhtml_customer_prepare_save>
+            <catalog_product_import_finish_before>
+                <observers>
+                    <newstoremember_catalog_product_import_finish_before>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>catalogProductImportFinishBefore</method>
+                    </newstoremember_catalog_product_import_finish_before>
+                </observers>
+            </catalog_product_import_finish_before>
         </events>
     </adminhtml>
     <frontend>
         <events>
-            <!--<checkout_type_onepage_save_order_after>-->
-                <!--<observers>-->
-                    <!--<newstoremembers_checkout_type_onepage_save_order_after>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>checkoutTypeOnepageSaveOrderAfter</method>-->
-                    <!--</newstoremembers_checkout_type_onepage_save_order_after>-->
-                <!--</observers>-->
-            <!--</checkout_type_onepage_save_order_after>-->
-            <!--<customer_login>-->
-                <!--<observers>-->
-                    <!--<newstoremembers_customer_login>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>newstoremembersCustomerLogin</method>-->
-                    <!--</newstoremembers_customer_login>-->
-                <!--</observers>-->
-            <!--</customer_login>-->
+            <checkout_type_onepage_save_order_after>
+                <observers>
+                    <newstoremembers_checkout_type_onepage_save_order_after>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>checkoutTypeOnepageSaveOrderAfter</method>
+                    </newstoremembers_checkout_type_onepage_save_order_after>
+                </observers>
+            </checkout_type_onepage_save_order_after>
+            <customer_login>
+                <observers>
+                    <newstoremembers_customer_login>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>newstoremembersCustomerLogin</method>
+                    </newstoremembers_customer_login>
+                </observers>
+            </customer_login>
         </events>
         <layout>
             <updates>
@@ -143,4 +140,16 @@
             </newstoremember>
         </routers>
     </frontend>
+    <crontab>
+        <jobs>
+            <newstoremember_expire_date>
+                <schedule>
+                    <cron_expr>*/1 * * * *  /bin/sh /home/ISM-ECOMPANY/t.blindaruk/projects/study1/public/cron.sh*</cron_expr>
+                </schedule>
+                <run>
+                    <model>newstoremember/observer::crontabNewstorememberExpireDate</model>
+                </run>
+            </newstoremember_expire_date>
+        </jobs>
+    </crontab>
 </config>

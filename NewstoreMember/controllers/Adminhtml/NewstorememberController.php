@@ -37,22 +37,22 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-//                if(!$data['customer_id']){
-//                    $data['customer_id']=null;
-//                }
+                if(!$data['customer_id']){
+                    $data['customer_id']=null;
+                }
                 $model = Mage::getModel('newstoremember/newstoremember');
                 $model->load($data['id']);
                 $model->setData($data)->save();
-//                /**@var $customerModel ISM_NewstoreMember_Model_Customer */
-//                $customerModel = Mage::getModel('newstoremember/customer');
-//                $customer = $data['customer_id'];
-//                if ($customer) {
-//                    $customerModel->setCustomerGroup($customer, Mage::helper('newstoremember')->getNewstoreMembersGroupId());
-//                }
-//                $prevCustomer = $model->getOrigData('customer_id');
-//                if ($prevCustomer && $prevCustomer !== $customer) {
-//                    $customerModel->toPrevCustomerGroup($prevCustomer);
-//                }
+                /**@var $customerModel ISM_NewstoreMember_Model_Customer */
+                $customerModel = Mage::getModel('newstoremember/customer');
+                $customer = $data['customer_id'];
+                if ($customer) {
+                    $customerModel->setCustomerGroup($customer, Mage::helper('newstoremember')->getNewstoreMembersGroupId());
+                }
+                $prevCustomer = $model->getOrigData('customer_id');
+                if ($prevCustomer && $prevCustomer !== $customer) {
+                    $customerModel->toPrevCustomerGroup($prevCustomer);
+                }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 $this->_redirect('*/*/');
@@ -76,10 +76,10 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
                 $model = Mage::getModel('newstoremember/newstoremember');
                 $data = $model->load($id);
                 $model->delete();
-//                $customerId = $data['customer_id'];
-//                if ($customerId) {
-//                    $modelCustomer->toPrevCustomerGroup($customerId);
-//                }
+                $customerId = $data['customer_id'];
+                if ($customerId) {
+                    $modelCustomer->toPrevCustomerGroup($customerId);
+                }
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('deleted successfully'));
                 $this->_redirect('*/*/index');
             } catch (Exception $e) {

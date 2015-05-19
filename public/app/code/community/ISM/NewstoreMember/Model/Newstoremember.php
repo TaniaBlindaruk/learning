@@ -11,31 +11,28 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
 
     public function save()
     {
-        if ($this->getCustomerId() === '') {
+        $customerId = $this->getCustomerId();
+        $origCustomerId = $this->getOrigData('customer_id');
+        if ($customerId === '') {
             $this->setCustomerId(null);
+        }
+        if($customerId!==$origCustomerId){
+            $modelCustomer = Mage::getModel('customer/customer');
+            if($customerId) {
+                $modelCustomer->load($customerId);
+                $modelCustomer->setPrevGroupId($modelCustomer->getGroupId());
+                $modelCustomer->setGroupId(Mage::helper('newstoremember')->getNewstoreMembersGroupId());
+                $modelCustomer->save();
+            }
+            if($origCustomerId) {
+                $modelCustomer->load($origCustomerId);
+                $modelCustomer->setGroupId($modelCustomer->getPrevGroupId());
+                $modelCustomer->save();
+            }
         }
         if ($this->getId() === '') {
             $this->setId(null);
         }
         return parent::save();
-    }
-
-    public function unsetNewstoremembersCustomer($customerId)
-    {
-        /**@var $model ISM_NewstoreMember_Model_Resource_Newstoremember_Collection */
-        $model = $this->getCollection();
-        $data = $model->getItemByColumnValue('customer_id', $customerId);
-        $data->setCustomerId(null)->save();
-    }
-
-    public function addCustomerToNewstoremembers($customerId)
-    {
-        $this->setData(
-            array(
-                'customer_id' => $customerId,
-                'unique_key' => Mage::helper('newstoremember')->getNewQniqueNumber(),
-                'expire_date' => now()
-            )
-        )->save();
     }
 }
