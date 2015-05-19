@@ -32,11 +32,15 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
 
     protected function _filterHasFullnameConditionCallback($collection, $column)
     {
-        if (!$value = $column->getFilter()->getValue()) {
-            return $this;
-        }
-        $this->getCollection()->getSelect()->where("fullname like" , "%$value%");
-        return $this;
+//        if (!$value = $column->getFilter()->getValue()) {
+//            return $this;
+//        }
+        $select = $collection->getSelect();
+        $field = $column->getIndex();
+        $value = $column->getFilter()->getValue();
+        $select->having("fullname=?", $value);
+//        $this->getCollection()->getSelect()->where("fullname like" , "%$value%");
+//        return $this;
     }
 
     protected function _prepareColumns()
