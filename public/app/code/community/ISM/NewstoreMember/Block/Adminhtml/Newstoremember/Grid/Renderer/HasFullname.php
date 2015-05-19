@@ -4,7 +4,7 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid_Renderer_HasFullnam
 {
     public function render(Varien_Object $row)
     {
-        return $row->getFirstname() .' '. $row->getLastname();
+        return $row->getFirstname() . ' ' . $row->getLastname();
 //        $value = trim((string)$row->getData($this->getColumn()->getIndex()));
 //        if (empty($value)) {
 //            return 'No';
@@ -12,7 +12,6 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid_Renderer_HasFullnam
 //            return 'Yes';
 //        }
     }
-
 
 
 }

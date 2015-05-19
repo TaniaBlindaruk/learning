@@ -16,15 +16,15 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
         if ($customerId === '') {
             $this->setCustomerId(null);
         }
-        if($customerId!==$origCustomerId){
+        if ($customerId !== $origCustomerId) {
             $modelCustomer = Mage::getModel('customer/customer');
-            if($customerId) {
+            if ($customerId) {
                 $modelCustomer->load($customerId);
                 $modelCustomer->setPrevGroupId($modelCustomer->getGroupId());
                 $modelCustomer->setGroupId(Mage::helper('newstoremember')->getNewstoreMembersGroupId());
                 $modelCustomer->save();
             }
-            if($origCustomerId) {
+            if ($origCustomerId) {
                 $modelCustomer->load($origCustomerId);
                 $modelCustomer->setGroupId($modelCustomer->getPrevGroupId());
                 $modelCustomer->save();

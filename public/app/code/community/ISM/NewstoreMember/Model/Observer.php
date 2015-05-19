@@ -6,7 +6,7 @@ class ISM_NewstoreMember_Model_Observer
     public function catalogProductSaveBefore(Varien_Event_Observer $observer)
     {
         $product = $observer->getProduct();
-        $data  = $product->getData();
+        $data = $product->getData();
         $newstorememberPrice = &$data['ism_newstoremembers_price'];
         if ($data['price'] < $newstorememberPrice) {
             $origData = $product->getOrigData();
@@ -20,7 +20,7 @@ class ISM_NewstoreMember_Model_Observer
             "price" => $newstorememberPrice,
             "delete" => $delete
         );
-        if (!$newstorememberPrice && $newstorememberPrice!=='') {
+        if (!$newstorememberPrice && $newstorememberPrice !== '') {
             $newstorememberPriceArray['delete'] = '1';
             $arrayGroupPrice = &$data['group_price'];
             $countGroupPrice = count($arrayGroupPrice);
@@ -34,5 +34,11 @@ class ISM_NewstoreMember_Model_Observer
             $data['group_price'][] = $newstorememberPriceArray;
         }
         $product->setData($data);
+    }
+
+    public function customerSaveBefore(Varien_Event_Observer $observer)
+    {
+
+
     }
 }

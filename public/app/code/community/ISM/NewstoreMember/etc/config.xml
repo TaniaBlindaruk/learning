@@ -62,6 +62,15 @@
                     </newstoremember_catalog_product_save_before>
                 </observers>
             </catalog_product_save_before>
+            <customer_save_before>
+                <observers>
+                    <newstoremember_adminhtml_customer_prepare_save>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>customerSaveBefore</method>
+                    </newstoremember_adminhtml_customer_prepare_save>
+                </observers>
+            </customer_save_before>
         </events>
     </global>
     <admin>
@@ -86,44 +95,44 @@
         <events>
 
             <!--<adminhtml_customer_prepare_save>-->
-                <!--<observers>-->
-                    <!--<newstoremember_adminhtml_customer_prepare_save>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>customerSaveBefore</method>-->
-                    <!--</newstoremember_adminhtml_customer_prepare_save>-->
-                <!--</observers>-->
+            <!--<observers>-->
+            <!--<newstoremember_adminhtml_customer_prepare_save>-->
+            <!--<type>model</type>-->
+            <!--<class>newstoremember/observer</class>-->
+            <!--<method>customerSaveBefore</method>-->
+            <!--</newstoremember_adminhtml_customer_prepare_save>-->
+            <!--</observers>-->
             <!--</adminhtml_customer_prepare_save>-->
             <!--<catalog_product_import_finish_before>-->
-                <!--<observers>-->
-                    <!--<newstoremember_catalog_product_import_finish_before>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>catalogProductImportFinishBefore</method>-->
-                    <!--</newstoremember_catalog_product_import_finish_before>-->
-                <!--</observers>-->
+            <!--<observers>-->
+            <!--<newstoremember_catalog_product_import_finish_before>-->
+            <!--<type>model</type>-->
+            <!--<class>newstoremember/observer</class>-->
+            <!--<method>catalogProductImportFinishBefore</method>-->
+            <!--</newstoremember_catalog_product_import_finish_before>-->
+            <!--</observers>-->
             <!--</catalog_product_import_finish_before>-->
         </events>
     </adminhtml>
     <frontend>
         <events>
             <!--<checkout_type_onepage_save_order_after>-->
-                <!--<observers>-->
-                    <!--<newstoremembers_checkout_type_onepage_save_order_after>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>checkoutTypeOnepageSaveOrderAfter</method>-->
-                    <!--</newstoremembers_checkout_type_onepage_save_order_after>-->
-                <!--</observers>-->
+            <!--<observers>-->
+            <!--<newstoremembers_checkout_type_onepage_save_order_after>-->
+            <!--<type>model</type>-->
+            <!--<class>newstoremember/observer</class>-->
+            <!--<method>checkoutTypeOnepageSaveOrderAfter</method>-->
+            <!--</newstoremembers_checkout_type_onepage_save_order_after>-->
+            <!--</observers>-->
             <!--</checkout_type_onepage_save_order_after>-->
             <!--<customer_login>-->
-                <!--<observers>-->
-                    <!--<newstoremembers_customer_login>-->
-                        <!--<type>model</type>-->
-                        <!--<class>newstoremember/observer</class>-->
-                        <!--<method>newstoremembersCustomerLogin</method>-->
-                    <!--</newstoremembers_customer_login>-->
-                <!--</observers>-->
+            <!--<observers>-->
+            <!--<newstoremembers_customer_login>-->
+            <!--<type>model</type>-->
+            <!--<class>newstoremember/observer</class>-->
+            <!--<method>newstoremembersCustomerLogin</method>-->
+            <!--</newstoremembers_customer_login>-->
+            <!--</observers>-->
             <!--</customer_login>-->
         </events>
         <layout>
