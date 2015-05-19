@@ -30,6 +30,15 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
         return parent::_prepareCollection();
     }
 
+    protected function _filterHasFullnameConditionCallback($collection, $column)
+    {
+        if (!$value = $column->getFilter()->getValue()) {
+            return $this;
+        }
+        $this->getCollection()->getSelect()->where("fullname like" , "%$value%");
+        return $this;
+    }
+
     protected function _prepareColumns()
     {
 
@@ -54,6 +63,8 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
             'header' => $helper->__('Customer Fullname'),
             'index' => 'fullname',
             'type' => 'text',
+//            'renderer'=>  new ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid_Renderer_HasFullname(),
+            'filter_condition_callback'=>array($this, '_filterHasFullnameConditionCallback')
         ));
 
         $this->addColumn('email', array(
@@ -76,5 +87,6 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
             'id' => $model->getId(),
         ));
     }
+
 
 }

@@ -73,24 +73,24 @@
             </updates>
         </layout>
         <events>
-            <controller_action_predispatch_adminhtml_catalog_product_save>
+            <catalog_product_save_before>
                 <observers>
-                    <newstoremembers_controller_action_predispatch_adminhtml_catalog_product_save>
+                    <newstoremember_catalog_product_save_before>
                         <type>model</type>
                         <class>newstoremember/observer</class>
-                        <method>controllerActionPredispatchAdminhtmlCatalogProductSave</method>
-                    </newstoremembers_controller_action_predispatch_adminhtml_catalog_product_save>
+                        <method>catalogProductSaveBefore</method>
+                    </newstoremember_catalog_product_save_before>
                 </observers>
-            </controller_action_predispatch_adminhtml_catalog_product_save>
-            <adminhtml_customer_prepare_save>
+            </catalog_product_save_before>
+            <customer_save_before>
                 <observers>
                     <newstoremember_adminhtml_customer_prepare_save>
                         <type>model</type>
                         <class>newstoremember/observer</class>
-                        <method>newstorememberAdminhtmlCustomerPrepareSave</method>
+                        <method>customerSaveBefore</method>
                     </newstoremember_adminhtml_customer_prepare_save>
                 </observers>
-            </adminhtml_customer_prepare_save>
+            </customer_save_before>
         </events>
     </adminhtml>
     <frontend>

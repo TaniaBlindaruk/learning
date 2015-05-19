@@ -3,24 +3,24 @@
 class ISM_NewstoreMember_Model_Observer
 {
 
-    public function controllerActionPredispatchAdminhtmlCatalogProductSave(Varien_Event_Observer $observer)
+    public function catalogProductSaveBefore(Varien_Event_Observer $observer)
     {
-        /**@var $request Mage_Core_Controller_Request_Http */
-        $request = $observer->getControllerAction()->getRequest();
-        $data = $request->getPost()['product'];
+        $product = $observer->getProduct();
+        $data  = $product->getData();
         $newstorememberPrice = &$data['ism_newstoremembers_price'];
         if ($data['price'] < $newstorememberPrice) {
-            $newstorememberPrice = '';
+            $origData = $product->getOrigData();
+            $newstorememberPrice = $origData['ism_newstoremembers_price'];
         }
         $delete = '';
         $newstorememberGroupId = Mage::helper('newstoremember')->getNewstoreMembersGroupId();
         $newstorememberPriceArray = array(
             "website_id" => '0',
             "cust_group" => $newstorememberGroupId,
-            "price" => $data['ism_newstoremembers_price'],
+            "price" => $newstorememberPrice,
             "delete" => $delete
         );
-        if (!$newstorememberPrice && $newstorememberPrice !== '0') {
+        if (!$newstorememberPrice && $newstorememberPrice!=='') {
             $newstorememberPriceArray['delete'] = '1';
             $arrayGroupPrice = &$data['group_price'];
             $countGroupPrice = count($arrayGroupPrice);
@@ -33,10 +33,10 @@ class ISM_NewstoreMember_Model_Observer
         } else {
             $data['group_price'][] = $newstorememberPriceArray;
         }
-        $request->setPost('product', $data);
+        $product->setData($data);
     }
 
-    public function newstorememberAdminhtmlCustomerPrepareSave(Varien_Event_Observer $observer)
+    public function customerSaveBefore(Varien_Event_Observer $observer)
     {
         /**@var $helper ISM_NewstoreMember_Helper_Data */
         $customer = $observer->getCustomer();
