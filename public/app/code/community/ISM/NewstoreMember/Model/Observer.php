@@ -58,7 +58,7 @@ class ISM_NewstoreMember_Model_Observer
     }
 
     public function catalogProductImportFinishBefore(Varien_Event_Observer $observer){
-        echo "asd";
+//        echo "asd";
     }
 
     public function checkoutTypeOnepageSaveOrderAfter(Varien_Event_Observer $observer)

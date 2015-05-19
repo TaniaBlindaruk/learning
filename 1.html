@@ -7,21 +7,46 @@
 <body>
 <select id  = 'customer_id'>
     <option value="1">asd</option>
+    <option selected value =2>adasd ad </option>
 </select>
-<input id ='expire_date' type = 'text'/>
+<input id ='expire_date' type = 'text' onchange="
+debugger;
+var input  = document.getElementById('expire_date');
+    var select  = document.getElementById('customer_id');
+      alert(Date.parse(this.value)-new Date());
+        if(Date.parse(this.value)<new Date()){
+        alert(1);
+            select.setAttribute('disabled',true);
+            select.value = null;
+        }else{
+            select.removeAttribute('disabled');
+        }
+
+"/>
 <script src="public/js/lib/jquery/jquery-1.10.2.min.js"></script>
 <script>
-    var $input = $('#expire_date');
-    var $select  = $('#customer_id');
-    $input.on('change',function(){
-        debugger;
-        var $this = $(this);
-       if(Date.parse($this.val())<new Date()){
-           $select.attr('disabled',true);
-       }else{
-           $select.attr('disabled',false);
-       }
-    });
+//    var $input = $('#expire_date');
+//    var $select  = $('#customer_id');
+//    $input.on('change',function(){
+//        debugger;
+//        var $this = $(this);
+//       if(Date.parse($this.val())<new Date()){
+//           $select.attr('disabled',true);
+//       }else{
+//           $select.attr('disabled',false);
+//       }
+//    });
+//
+
+//    var input  = document.getElementById('expire_date');
+//    var select  = document.getElementById('customer_id');
+//        if(Date.parse(this.value)<new Date()){
+//            select.setAttribute('disabled',true);
+//        }else{
+//            select.setAttribute('disabled',false);
+//        }
+//    });
+
 
 </script>
 </body>

@@ -32,13 +32,25 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
             'name' => 'unique_key'
         ));
         $idSelect ='customer_id';
+
         $fieldset->addField('expire_date', 'date', array(
             'format' => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT),
             'image' => $this->getSkinUrl('images/grid-cal.gif'),
             'label' => $helper->__('Expire date'),
             'name' => 'expire_date',
+            'onchange'=>'var input  = document.getElementById(\'expire_date\');
+            debugger;
+    var select  = document.getElementById(\'customer_id\');
+        if(Date.parse(this.value)<=new Date()){
+            select.setAttribute(\'disabled\',true);
+             select.value=\'\';
+        }else{
+            select.removeAttribute(\'disabled\');
+        }',
             'required' => true
         ));
+
+
 
         $data = Mage::getSingleton('adminhtml/session')->getFormData();
         if ($data) {
@@ -55,7 +67,7 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
         $fieldset->addField($idSelect, 'select', array(
             'label' => $helper->__('User'),
             'name' => 'customer_id',
-//            'disabled'  => $disabled,
+            'disabled'  => $disabled,
             'values' => $helper->getUserListIsNotNewstoreMembers($customerId)
         ));
         $form->setUseContainer(true);

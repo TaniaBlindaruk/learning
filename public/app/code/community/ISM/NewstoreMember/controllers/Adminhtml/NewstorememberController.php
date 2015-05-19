@@ -37,6 +37,9 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
+                if(!$data['customer_id']){
+                    $data['customer_id']=null;
+                }
                 $model = Mage::getModel('newstoremember/newstoremember');
                 $model->load($data['id']);
                 $model->setData($data)->save();
