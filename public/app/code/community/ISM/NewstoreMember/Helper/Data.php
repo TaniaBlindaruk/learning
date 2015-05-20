@@ -40,31 +40,46 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function addCustomerToNewstoreMemberFrontend($number)
     {
-        /**@var $model ISM_NewstoreMember_Model_Resource_Newstoremember_Collection */
-        $model = Mage::getModel('newstoremember/newstoremember')->getCollection();
-        $modelData = $model->getItemByColumnValue('unique_key', $number);
-
         /**@var $singltonSession Mage_Core_Model_Session */
         $singltonSession = Mage::getSingleton('core/session');
-        $customerId = $singltonSession->getVisitorData()['customer_id'];
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+        $billingAddress = $customer->getPrimaryBillingAddress();
+        if ($billingAddress) {
 
-        if (empty($modelData)) {
-            $singltonSession->addError('Your newstoremember number is invalid!');
-            return false;
-        } else if (!$modelData['customer_id'] && $modelData['expire_date'] > now()) {
-
-            $modelAddress = Mage::getModel('customer/address')->load($customerId);
-            $customerPostcode = $modelAddress->getPostcode();
-            if ($customerPostcode && $customerPostcode === $modelData->getPostCode()) {
-                /**@var $customerModel ISM_NewstoreMember_Model_Customer */
-                $modelData->setCustomerId($customerId)->save();
-                return true;
-            } else {
-                $singltonSession->addError('Sorry, but your postcode is invalid.');
+            /**@var $model ISM_NewstoreMember_Model_Newstoremember */
+            $model = Mage::getSingleton('newstoremember/newstoremember');
+            /**@var $collectionNewstoremember ISM_NewstoreMember_Model_Resource_Newstoremember_Collection */
+            $collectionNewstoremember = $model->getCollection();
+            $newstoremember = $collectionNewstoremember->getItemByColumnValue('unique_key', $number);
+            if (empty($newstoremember)) {
+                $singltonSession->addError('Your newstoremember number is invalid!');
                 return false;
+            } else {
+
+                if ($newstorememberCustomerId = $newstoremember -> getCustomerId()) {
+                    $singltonSession->addError('This newstoremember number is not free!');
+                    return false;
+                }
+
+                $newstorememberExpireDate = $newstoremember -> getExpireDate();
+                if ($newstorememberExpireDate < now()) {
+                    $singltonSession->addError('This newstoremember number is invalid');
+                    return false;
+                }
+
+                if ($billingAddress->getPostcode() !== $newstoremember->getPostCode()) {
+                    $singltonSession->addError('Sorry, but your postcode is invalid.');
+                    return false;
+                }
+
+                $newstoremember->setCustomerId($customer->getEntityId());
+                $model->setData($newstoremember->getData())->save();
+                return true;
+
             }
+        } else {
+            $singltonSession->addError('Please, create address');
+            return false;
         }
-        $singltonSession->addError('Your newstoremember number is\'t $customerIdfree or invalid expire date!');
-        return false;
     }
 }
