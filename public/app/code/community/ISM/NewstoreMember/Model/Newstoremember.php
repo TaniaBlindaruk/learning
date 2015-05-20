@@ -43,6 +43,9 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
                         $modelCustomer->setPrevGroupId($modelCustomer->getGroupId());
                         $modelCustomer->setGroupId(Mage::helper('newstoremember')->getNewstoreMembersGroupId());
                         $modelCustomer->save();
+
+
+
                     }
                     if ($origCustomerId) {
                         $modelCustomer->load($origCustomerId);
