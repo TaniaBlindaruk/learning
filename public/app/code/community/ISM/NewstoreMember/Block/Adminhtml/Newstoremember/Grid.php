@@ -41,13 +41,15 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
         if (!$value = $column->getFilter()->getValue()) {
             return $this;
         }
+        $collection = Mage::getModel('newstoremember/newstoremember')
+            ->getCollection();
         $firstName = Mage::getModel('eav/entity_attribute')
             ->loadByCode('1', 'firstname');
         $lastName = Mage::getModel('eav/entity_attribute')
             ->loadByCode('1', 'lastname');
         $firstnameAttributeId = $firstName->getAttributeId();
         $latnameAttributeId = $lastName->getAttributeId();
-        $this->getCollection()->getSelect()
+        $collection->getSelect()
             ->columns(new Zend_Db_Expr("CONCAT(`cev1`.`value`, ' ',"
                 . "`cev2`.`value`) AS fullname"))
             ->joinLeft(array('ce' => 'customer_entity'),
@@ -59,12 +61,12 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
             ->joinLeft(array('cev2' => 'customer_entity_varchar'),
                 "cev2.entity_id=main_table.customer_id AND cev2.attribute_id= $latnameAttributeId",
                 array('lastname' => 'value'))
-            ->where("fullname like" . "%$value%");
+            ->where("CONCAT(`cev1`.`value`, ' ',"
+                . "`cev2`.`value`)" , $value);
+
         $this->setCollection($collection);
-        return parent::_prepareCollection();
-
-
         return $this;
+
     }
 
     protected function _prepareColumns()

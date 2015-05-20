@@ -33,7 +33,6 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
         return Mage::getStoreConfig('newstoremember/newstoremember_group/newstoremember_field_group');
     }
 
-
     public function getNewQniqueNumber()
     {
         return Mage::helper('core')->getRandomString(10);
