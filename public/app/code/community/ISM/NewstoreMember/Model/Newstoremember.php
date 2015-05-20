@@ -19,6 +19,7 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
                 ->setGroupId($modelCustomer->getPrevGroupId())
                 ->save();
         }
+        return parent::delete();
     }
 
     public function save()
