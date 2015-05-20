@@ -76,4 +76,17 @@ class ISM_NewstoreMember_Model_Observer
             $observer->getQuote()->setNewstoremembersNumber($key)->save();
         }
     }
+
+    public function customerLogin(Varien_Event_Observer $observer)
+    {
+        $customer = $observer->getCustomer();
+        /**@var $newstorememberModel ISM_NewstoreMember_Model_Newstoremember */
+        $newstorememberModel = Mage::getModel('newstoremember/newstoremember');
+        $data = $newstorememberModel->getCollection()->getItemByColumnValue('customer_id', $customer->getEntityId());
+
+        if ($data && $data->getExpireDate() < now(true)) {
+            $customer->setGroupId($customer->getPrevGroupId())->save();
+        }
+
+    }
 }

@@ -116,15 +116,15 @@
                     </newstoremembers_checkout_type_onepage_save_order_after>
                 </observers>
             </checkout_type_onepage_save_order_after>
-            <!--<customer_login>-->
-            <!--<observers>-->
-            <!--<newstoremembers_customer_login>-->
-            <!--<type>model</type>-->
-            <!--<class>newstoremember/observer</class>-->
-            <!--<method>newstoremembersCustomerLogin</method>-->
-            <!--</newstoremembers_customer_login>-->
-            <!--</observers>-->
-            <!--</customer_login>-->
+            <customer_login>
+                <observers>
+                    <newstoremembers_customer_login>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>customerLogin</method>
+                    </newstoremembers_customer_login>
+                </observers>
+            </customer_login>
         </events>
         <layout>
             <updates>
