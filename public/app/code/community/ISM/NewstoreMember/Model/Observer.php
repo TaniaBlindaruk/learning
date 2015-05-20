@@ -46,20 +46,34 @@ class ISM_NewstoreMember_Model_Observer
         $origGroupId = $origDataCustomer['group_id'];
         $groupId = $dataCustomer['group_id'];
 
-        if($origGroupId!==$groupId){
-            /**@var $helper ISM_NewstoreMember_Helper_Data*/
+        if ($origGroupId !== $groupId) {
+            /**@var $helper ISM_NewstoreMember_Helper_Data */
             $helper = Mage::helper('newstoremember');
             $newstoremembersGroupId = $helper->getNewstoreMembersGroupId();
-            /**@var $model ISM_NewstoreMember_Model_Newstoremember*/
-            $model  = Mage::getModel('newstoremember/newstoremember');
+            /**@var $model ISM_NewstoreMember_Model_Newstoremember */
+            $model = Mage::getModel('newstoremember/newstoremember');
 
             $customerId = $dataCustomer['entity_id'];
-            if($origGroupId===$newstoremembersGroupId){
+            if ($origGroupId === $newstoremembersGroupId) {
                 $model->unsetNewstoremembersCustomer($origDataCustomer['entity_id']);
-            }else if($groupId === $newstoremembersGroupId &&Mage::getSingleton('customer/customer')->getEntityId()!==$customerId){
+            } else if ($groupId === $newstoremembersGroupId && Mage::getSingleton('customer/customer')->getEntityId() !== $customerId) {
                 $customer->setData($dataCustomer);
                 $model->addCustomerToNewstoremembers($customerId);
             }
+        }
+    }
+
+    public function checkoutTypeOnepageSaveOrderAfter(Varien_Event_Observer $observer)
+    {
+        $order = $observer->getOrder();
+        $customer = $order->getCustomer();
+        $collection = Mage::getModel('newstoremember/newstoremember')->getCollection()
+            ->getItemByColumnValue('customer_id', $customer->getEntityId());
+        $helper = Mage::helper('newstoremember');
+        if ($customer->getGroupId() === $helper->getNewstoreMembersGroupId() && $collection->hasUniqueKey()) {
+            $key = $collection->getUniqueKey();
+            $order->setNewstoremembersNumber($key)->save();
+            $observer->getQuote()->setNewstoremembersNumber($key)->save();
         }
     }
 }

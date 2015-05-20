@@ -94,15 +94,6 @@
         </layout>
         <events>
 
-            <!--<adminhtml_customer_prepare_save>-->
-            <!--<observers>-->
-            <!--<newstoremember_adminhtml_customer_prepare_save>-->
-            <!--<type>model</type>-->
-            <!--<class>newstoremember/observer</class>-->
-            <!--<method>customerSaveBefore</method>-->
-            <!--</newstoremember_adminhtml_customer_prepare_save>-->
-            <!--</observers>-->
-            <!--</adminhtml_customer_prepare_save>-->
             <!--<catalog_product_import_finish_before>-->
             <!--<observers>-->
             <!--<newstoremember_catalog_product_import_finish_before>-->
@@ -116,15 +107,15 @@
     </adminhtml>
     <frontend>
         <events>
-            <!--<checkout_type_onepage_save_order_after>-->
-            <!--<observers>-->
-            <!--<newstoremembers_checkout_type_onepage_save_order_after>-->
-            <!--<type>model</type>-->
-            <!--<class>newstoremember/observer</class>-->
-            <!--<method>checkoutTypeOnepageSaveOrderAfter</method>-->
-            <!--</newstoremembers_checkout_type_onepage_save_order_after>-->
-            <!--</observers>-->
-            <!--</checkout_type_onepage_save_order_after>-->
+            <checkout_type_onepage_save_order_after>
+                <observers>
+                    <newstoremembers_checkout_type_onepage_save_order_after>
+                        <type>model</type>
+                        <class>newstoremember/observer</class>
+                        <method>checkoutTypeOnepageSaveOrderAfter</method>
+                    </newstoremembers_checkout_type_onepage_save_order_after>
+                </observers>
+            </checkout_type_onepage_save_order_after>
             <!--<customer_login>-->
             <!--<observers>-->
             <!--<newstoremembers_customer_login>-->
