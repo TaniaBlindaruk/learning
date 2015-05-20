@@ -6,3 +6,9 @@
    При виборі юзера в newstoremembers, його група автоматично зміюється на nestoremembers
 6)As a Visitor I want to be able to enter my member number on my account page and become a valid
   member.
+
+
+  'Your acoount is already added to Newstore Members'
+  'Your individual member number is invalid!
+  'Sorry, but your postcode is invalid.'
+  'Sorry, but your individual member number is expired.'

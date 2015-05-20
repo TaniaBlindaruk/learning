@@ -22,6 +22,10 @@ $table = $installer->getConnection()
     ->addColumn('expire_date', Varien_Db_Ddl_Table::TYPE_DATE, null, array(
         'nullable' => true,
     ))
+    ->addColumn('post_code', Varien_Db_Ddl_Table::TYPE_VARCHAR, '255', array(
+        'nullable' => false,
+        'default' => ''
+    ))
     ->addForeignKey(
         $installer->getFkName('newstoremember/newstoremember', 'customer_id', 'customer/entity', 'entity_id'),
         'customer_id',

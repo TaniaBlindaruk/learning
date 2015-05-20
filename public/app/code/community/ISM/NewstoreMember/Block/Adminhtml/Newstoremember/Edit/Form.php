@@ -31,6 +31,11 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Edit_Form extends Mage_A
             'required' => true,
             'name' => 'unique_key'
         ));
+        $fieldset->addField('post_code', 'text', array(
+            'label' => $helper->__('Post Code'),
+            'required' => true,
+            'name' => 'post_code'
+        ));
         $idSelect = 'customer_id';
 
         $fieldset->addField('expire_date', 'date', array(

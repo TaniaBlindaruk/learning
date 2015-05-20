@@ -100,6 +100,10 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
             'align' => 'left',
             'index' => 'email',
         ));
+        $this->addColumn('post_code', array(
+            'header' => $helper->__('Post Code'),
+            'index' => 'post_code',
+        ));
 
         $this->addColumn('expire_date', array(
             'header' => $helper->__('Expire date'),

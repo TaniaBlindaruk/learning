@@ -29,6 +29,7 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
         $newtoreMemberId = $this->getId();
         if ($customerId === '') {
             $this->setCustomerId(null);
+            $customerId =null;
         }
         if ($newtoreMemberId === '') {
             $this->setId(null);
