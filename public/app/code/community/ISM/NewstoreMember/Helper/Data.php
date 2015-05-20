@@ -38,4 +38,22 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::helper('core')->getRandomString(10);
     }
+
+    public function addCustomerToNewstoreMemberFrontend($number)
+    {
+        /**@var $model ISM_NewstoreMember_Model_Resource_Newstoremember_Collection */
+        $model = Mage::getModel('newstoremember/newstoremember')->getCollection();
+        $modelData = $model->getItemByColumnValue('unique_key', $number);
+        if (empty($modelData)) {
+            Mage::getSingleton('core/session')->addError('Your member number is invalid!');
+            return false;
+        } else if (!$modelData['customer_id'] && $modelData['expire_date'] > now()) {
+            /**@var $customerModel ISM_NewstoreMember_Model_Customer */
+            $customerId = Mage::getSingleton('customer/session')->getCustomer()->getEntityId();
+            $modelData->setCustomerId($customerId)->save();
+            return true;
+        }
+        Mage::getSingleton('core/session')->addError('This member number is\'t empty or expire_date');
+        return false;
+    }
 }
