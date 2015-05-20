@@ -20,7 +20,7 @@ class ISM_NewstoreMember_Model_Observer
             "price" => $newstorememberPrice,
             "delete" => $delete
         );
-        if (!$newstorememberPrice && $newstorememberPrice !== '') {
+        if (!$newstorememberPrice && $newstorememberPrice !== '0') {
             $newstorememberPriceArray['delete'] = '1';
             $arrayGroupPrice = &$data['group_price'];
             $countGroupPrice = count($arrayGroupPrice);
@@ -38,7 +38,28 @@ class ISM_NewstoreMember_Model_Observer
 
     public function customerSaveBefore(Varien_Event_Observer $observer)
     {
+        $customer = $observer->getCustomer();
 
+        $origDataCustomer = $customer->getOrigData();
+        $dataCustomer = $customer->getData();
 
+        $origGroupId = $origDataCustomer['group_id'];
+        $groupId = $dataCustomer['group_id'];
+
+        if($origGroupId!==$groupId){
+            /**@var $helper ISM_NewstoreMember_Helper_Data*/
+            $helper = Mage::helper('newstoremember');
+            $newstoremembersGroupId = $helper->getNewstoreMembersGroupId();
+            /**@var $model ISM_NewstoreMember_Model_Newstoremember*/
+            $model  = Mage::getModel('newstoremember/newstoremember');
+
+            $customerId = $dataCustomer['entity_id'];
+            if($origGroupId===$newstoremembersGroupId){
+                $model->unsetNewstoremembersCustomer($origDataCustomer['entity_id']);
+            }else if($groupId === $newstoremembersGroupId &&Mage::getSingleton('customer/customer')->getEntityId()!==$customerId){
+                $customer->setData($dataCustomer);
+                $model->addCustomerToNewstoremembers($customerId);
+            }
+        }
     }
 }
