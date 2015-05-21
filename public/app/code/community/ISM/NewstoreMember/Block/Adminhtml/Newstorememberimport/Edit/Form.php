@@ -6,7 +6,7 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstorememberimport_Edit_Form extends 
     {
         $form = new Varien_Data_Form(array(
             'id'      => 'edit_form',
-            'action'  => $this->getUrl('*/*/index'),
+            'action'  => $this->getUrl('*/*/validate'),
             'method'  => 'post',
             'enctype' => 'multipart/form-data'
         ));
