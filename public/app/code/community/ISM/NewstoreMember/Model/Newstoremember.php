@@ -3,6 +3,7 @@
 class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
 {
 
+    private $customer  = null;
     public function _construct()
     {
         parent::_construct();
@@ -43,10 +44,8 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
                         $modelCustomer->setPrevGroupId($modelCustomer->getGroupId());
                         $modelCustomer->setGroupId(Mage::helper('newstoremember')->getNewstoreMembersGroupId());
                         $modelCustomer->save();
-
-
-
                     }
+
                     if ($origCustomerId) {
                         $modelCustomer->load($origCustomerId);
                         $modelCustomer->setGroupId($modelCustomer->getPrevGroupId());
@@ -56,6 +55,19 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
             }
         }
         return parent::save();
+    }
+
+    public function getCustomer(){
+        $customerId = $this->getCustomerId();
+        if(!$this->customer && $customerId){
+            $this->customer = Mage::getModel('customer/customer')->load($this->getCustomerId());
+        }
+        return $this->customer;
+    }
+
+    public function load($id, $field=null){
+        $this->customer =null;
+        return parent::load($id, $field);
     }
 
     public function unsetNewstoremembersCustomer($customerId)
