@@ -12,7 +12,7 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstorememberimport_Edit extends Mage_
     protected function _construct()
     {
         parent::_construct();
-        $this->_blockGroup = 'newstorememberimport';
+        $this->_blockGroup = 'newstoremember';
         $this->_controller = 'adminhtml_newstorememberimport';
     }
 
