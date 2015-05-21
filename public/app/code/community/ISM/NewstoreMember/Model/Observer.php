@@ -7,8 +7,17 @@ class ISM_NewstoreMember_Model_Observer
     {
         $product = $observer->getProduct();
         $data = $product->getData();
+        $groupPrices = $product->getData('group_price');
+        if (is_null($groupPrices)) {
+            $attribute = $product->getResource()->getAttribute('group_price');
+            if ($attribute){
+                $attribute->getBackend()->afterLoad($product);
+                $data['group_price'] = $product->getData('group_price');
+            }
+        }
+
         $newstorememberPrice = &$data['ism_newstoremembers_price'];
-        if ($data['price'] < $newstorememberPrice) {
+        if ($product->getPrice() < $newstorememberPrice) {
             $origData = $product->getOrigData();
             $newstorememberPrice = $origData['ism_newstoremembers_price'];
         }

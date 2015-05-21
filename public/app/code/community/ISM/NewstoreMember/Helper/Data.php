@@ -82,4 +82,55 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
             return false;
         }
     }
+
+
+    public function import(){
+        $varienFileCsv = new Varien_File_Csv();
+        $file = $_FILES['import_file'];
+        if($file['type']=='text/csv') {
+            $data = $varienFileCsv->getData($file['tmp_name']);
+            $nameAttribute = array();
+            if ($data) {
+                $row = count($data);
+                if (isset($data[0])) {
+                    $firsRow = $data[0];
+                    $cel = count($firsRow);
+                    for ($i = 0; $i < $cel; ++$i) {
+                        if ($firsRow[$i] == 'sku') {
+                            $nameAttribute['sku'] = $i;
+                            continue;
+                        }
+                        if ($firsRow[$i] == 'ism_newstoremembers_price') {
+                            $nameAttribute['ism_newstoremembers_price'] = $i;
+                            continue;
+                        }
+                    }
+                }
+
+                $selectSku = array();
+                $arraySkuPrice = array();
+                for ($i = 1; $i < $row; ++$i) {
+                    $sku = $data[$i][$nameAttribute['sku']];
+                    $selectSku[] = $sku;
+                    $arraySkuPrice[$sku] = $data[$i][$nameAttribute['ism_newstoremembers_price']];
+                }
+
+                $collection = Mage::getModel('catalog/product')->getCollection()
+                    ->addAttributeToSelect('*')
+                    ->addAttributeToFilter('sku', array(
+                        'in' => $selectSku
+                    ));
+
+                foreach ($collection as $coll) {
+                    try {
+                        $coll->setIsmNewstoremembersPrice($arraySkuPrice[$coll->getSku()])->save();
+                    } catch (Exception $e) {
+
+                    }
+                }
+            }
+        }else{
+            throw new Exception('!csv');
+        }
+    }
 }
