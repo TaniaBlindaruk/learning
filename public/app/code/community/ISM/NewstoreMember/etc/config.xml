@@ -36,6 +36,9 @@
             </newstoremember_resource>
             <customer_resource>
                 <rewrite>
+                    <!--getResourceModel('newstoremember/customer_collecion')-->
+                    <!--getModel('newstoremember/resource_customer_collecion')-->
+
                     <customer_collection>ISM_NewstoreMember_Model_Resource_Customer_Collection</customer_collection>
                 </rewrite>
             </customer_resource>

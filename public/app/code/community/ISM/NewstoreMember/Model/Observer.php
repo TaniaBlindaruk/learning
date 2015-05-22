@@ -47,6 +47,7 @@ class ISM_NewstoreMember_Model_Observer
 
     public function customerSaveBefore(Varien_Event_Observer $observer)
     {
+        /** @var $customer Mage_Customer_Model_Customer */
         $customer = $observer->getCustomer();
 
         $origDataCustomer = $customer->getOrigData();
