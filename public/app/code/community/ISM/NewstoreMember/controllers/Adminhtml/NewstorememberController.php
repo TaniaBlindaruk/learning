@@ -37,9 +37,7 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
     {
         if ($data = $this->getRequest()->getPost()) {
             try {
-                $model = Mage::getModel('newstoremember/newstoremember');
-                $model->load($data['id']);
-                $model->setData($data)->save();
+                Mage::getModel('newstoremember/newstoremember')->load($data['id'])->setData($data)->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('saved successfully'));
                 Mage::getSingleton('adminhtml/session')->setFormData(false);
                 $this->_redirect('*/*/');
@@ -50,18 +48,14 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberController extends Mage_Adminht
                     'id' => $this->getRequest()->getParam('id')
                 ));
             }
-            return;
         }
-        Mage::getSingleton('adminhtml/session')->addError($this->__('Unable to find item to save'));
     }
 
     public function deleteAction()
     {
         if ($id = $this->getRequest()->getParam('id')) {
             try {
-                $model = Mage::getModel('newstoremember/newstoremember');
-                $data = $model->load($id);
-                $model->delete();
+                Mage::getModel('newstoremember/newstoremember')->load($id)->delete();
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('deleted successfully'));
                 $this->_redirect('*/*/index');
             } catch (Exception $e) {

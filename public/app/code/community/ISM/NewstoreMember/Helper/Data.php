@@ -52,23 +52,23 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
             $collectionNewstoremember = $model->getCollection();
             $newstoremember = $collectionNewstoremember->getItemByColumnValue('unique_key', $number);
             if (empty($newstoremember)) {
-                $singltonSession->addError('Your newstoremember number is invalid!');
+                $singltonSession->addError($this->__('Your newstoremember number is invalid!'));
                 return false;
             } else {
 
                 if ($newstorememberCustomerId = $newstoremember -> getCustomerId()) {
-                    $singltonSession->addError('This newstoremember number is not free!');
+                    $singltonSession->addError($this->__('This newstoremember number is not free!'));
                     return false;
                 }
 
                 $newstorememberExpireDate = $newstoremember -> getExpireDate();
                 if ($newstorememberExpireDate < now()) {
-                    $singltonSession->addError('This newstoremember number is invalid');
+                    $singltonSession->addError($this->__('This newstoremember number is invalid'));
                     return false;
                 }
 
                 if ($billingAddress->getPostcode() !== $newstoremember->getPostCode()) {
-                    $singltonSession->addError('Sorry, but your postcode is invalid.');
+                    $singltonSession->addError($this->__('Sorry, but your postcode is invalid.'));
                     return false;
                 }
 
@@ -78,11 +78,10 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
 
             }
         } else {
-            $singltonSession->addError('Please, create address');
+            $singltonSession->addError($this->__('Please, create address'));
             return false;
         }
     }
-
 
     public function import(){
         $varienFileCsv = new Varien_File_Csv();

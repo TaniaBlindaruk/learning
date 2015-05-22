@@ -24,7 +24,7 @@ class ISM_NewstoreMember_Adminhtml_NewstorememberimportController extends Mage_A
         try {
 
             Mage::helper('newstoremember')->import();
-            Mage::getSingleton('core/session')->addError('asdasd');
+            Mage::getSingleton('core/session')->addSuccess('success');
         }
         catch(Exception $e){
             Mage::getSingleton('core/session')->addError($e->getMessage());
