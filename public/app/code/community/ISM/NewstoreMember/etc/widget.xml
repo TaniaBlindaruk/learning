@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<widgets type="newstoremember/widget_newstoremember">
+    <catalog_product_link>
+        <parameters>
+            <template translate="label">
+                <values>
+                    <link_inline_1 translate="label">
+                        <value>newstoremember/widget/newstoremember.phtml</value>
+                        <!--<value>catalog/product/widget/link/link_inline.phtml</value>-->
+                        <label>My</label>
+                    </link_inline_1>
+                </values>
+            </template>
+        </parameters>
+    </catalog_product_link>
+
+</widgets>
