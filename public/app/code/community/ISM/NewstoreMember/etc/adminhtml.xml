@@ -10,7 +10,7 @@
                     <action>adminhtml/newstoremember</action>
                 </newstorenumber>
                 <newstorenumber_import_price_product module="newstoremember">
-                    <title>Import newstoremembersprice to product</title>
+                    <title>Import newstoremembers price</title>
                     <action>adminhtml/newstorememberimport</action>
                 </newstorenumber_import_price_product>
             </children>
@@ -28,7 +28,7 @@
                                 <title>Manage NewstoreNumber</title>
                             </newstorenumber>
                             <newstorenumber_import_price_product module="newstoremember">
-                                <title>Import newstoremembersprice to product</title>
+                                <title>Import newstoremembers price </title>
                             </newstorenumber_import_price_product>
                         </children>
                     </newstoremember>

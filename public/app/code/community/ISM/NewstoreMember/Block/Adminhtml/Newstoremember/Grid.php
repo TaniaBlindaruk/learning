@@ -93,7 +93,6 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
             'header' => $helper->__('Customer Fullname'),
             'index' => 'fullname',
             'type' => 'text',
-//            'renderer'=>  new ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid_Renderer_HasFullname(),
             'filter_condition_callback' => array($this, '_filterHasFullnameConditionCallback')
         ));
 

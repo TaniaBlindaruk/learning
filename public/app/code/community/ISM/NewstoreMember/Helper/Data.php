@@ -105,7 +105,9 @@ class ISM_NewstoreMember_Helper_Data extends Mage_Core_Helper_Abstract
                         }
                     }
                 }
-
+                if(count($nameAttribute)!=2){
+                    throw new Exception('Error');
+                }
                 $selectSku = array();
                 $arraySkuPrice = array();
                 for ($i = 1; $i < $row; ++$i) {
