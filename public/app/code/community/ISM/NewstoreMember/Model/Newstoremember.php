@@ -3,7 +3,6 @@
 class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
 {
 
-    private $customer  = null;
     public function _construct()
     {
         parent::_construct();
@@ -39,6 +38,14 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
             if ($customerId !== $origCustomerId) {
                 $modelCustomer = Mage::getSingleton('customer/customer');
                 if ($modelCustomer->isEmpty()) {
+
+                    if ($origCustomerId) {
+                        $modelCustomer->load($origCustomerId);
+                        $modelCustomer->setGroupId($modelCustomer->getPrevGroupId());
+                        $modelCustomer->save();
+                        $modelCustomer->setData(array());
+                    }
+
                     if ($customerId) {
                         $modelCustomer->load($customerId);
                         $modelCustomer->setPrevGroupId($modelCustomer->getGroupId());
@@ -46,28 +53,12 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
                         $modelCustomer->save();
                     }
 
-                    if ($origCustomerId) {
-                        $modelCustomer->load($origCustomerId);
-                        $modelCustomer->setGroupId($modelCustomer->getPrevGroupId());
-                        $modelCustomer->save();
-                    }
+
+
                 }
             }
         }
         return parent::save();
-    }
-
-    public function getCustomer(){
-        $customerId = $this->getCustomerId();
-        if(!$this->customer && $customerId){
-            $this->customer = Mage::getModel('customer/customer')->load($this->getCustomerId());
-        }
-        return $this->customer;
-    }
-
-    public function load($id, $field=null){
-        $this->customer =null;
-        return parent::load($id, $field);
     }
 
     public function unsetNewstoremembersCustomer($customerId)
@@ -75,7 +66,10 @@ class ISM_NewstoreMember_Model_Newstoremember extends Mage_Core_Model_Abstract
         /**@var $model ISM_NewstoreMember_Model_Resource_Newstoremember_Collection */
         $model = $this->getCollection();
         $data = $model->getItemByColumnValue('customer_id', $customerId);
-        $data->setCustomerId(null)->save();
+        if( $data){
+            $data->setCustomerId(null)->save();
+        }
+
     }
 
     public function addCustomerToNewstoremembers($customerId)

@@ -6,7 +6,7 @@
             <sort_order>77</sort_order>
             <children>
                 <newstorenumber module="newstoremember">
-                    <title>Manage NewstoreNumber</title>
+                    <title>Newstore Number</title>
                     <action>adminhtml/newstoremember</action>
                 </newstorenumber>
                 <newstorenumber_import_price_product module="newstoremember">
@@ -25,7 +25,7 @@
                         <sort_order>0</sort_order>
                         <children>
                             <newstorenumber module="newstoremember">
-                                <title>Manage NewstoreNumber</title>
+                                <title>Nuwstore Number</title>
                             </newstorenumber>
                             <newstorenumber_import_price_product module="newstoremember">
                                 <title>Import newstoremembers price </title>
