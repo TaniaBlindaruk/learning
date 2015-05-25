@@ -41,32 +41,11 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
         if (!$value = $column->getFilter()->getValue()) {
             return $this;
         }
-        $collection = Mage::getModel('newstoremember/newstoremember')
-            ->getCollection();
-        $firstName = Mage::getModel('eav/entity_attribute')
-            ->loadByCode('1', 'firstname');
-        $lastName = Mage::getModel('eav/entity_attribute')
-            ->loadByCode('1', 'lastname');
-        $firstnameAttributeId = $firstName->getAttributeId();
-        $latnameAttributeId = $lastName->getAttributeId();
         $collection->getSelect()
-            ->columns(new Zend_Db_Expr("CONCAT(`cev1`.`value`, ' ',"
-                . "`cev2`.`value`) AS fullname"))
-            ->joinLeft(array('ce' => 'customer_entity'),
-                'ce.entity_id=main_table.customer_id',
-                array('email' => 'email'))
-            ->joinLeft(array('cev1' => 'customer_entity_varchar'),
-                "cev1.entity_id=main_table.customer_id AND cev1.attribute_id= $firstnameAttributeId",
-                array('firstname' => 'value'))
-            ->joinLeft(array('cev2' => 'customer_entity_varchar'),
-                "cev2.entity_id=main_table.customer_id AND cev2.attribute_id= $latnameAttributeId",
-                array('lastname' => 'value'))
             ->where("CONCAT(`cev1`.`value`, ' ',"
-                . "`cev2`.`value`)" , $value);
-
+                . "`cev2`.`value`) LIKE ?" , '%' . $value. '%');
         $this->setCollection($collection);
         return $this;
-
     }
 
     protected function _prepareColumns()
@@ -95,7 +74,6 @@ class ISM_NewstoreMember_Block_Adminhtml_Newstoremember_Grid extends Mage_Adminh
             'type' => 'text',
             'filter_condition_callback' => array($this, '_filterHasFullnameConditionCallback')
         ));
-
         $this->addColumn('email', array(
             'header' => $helper->__('email'),
             'align' => 'left',
